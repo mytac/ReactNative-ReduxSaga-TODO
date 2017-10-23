@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {
-    Text,View
+    Text,View,StyleSheet
 } from 'react-native'
+
+import DashBoard from './DashBoard'
+import List from './List'
 
 export default class Panel extends React.Component{
     constructor(props){
@@ -10,8 +13,9 @@ export default class Panel extends React.Component{
 
     render(){
         return(
-            <View>
-                <Text>Panel</Text>
+            <View style={{flex:2}}>
+                <DashBoard/>
+                <List/>
             </View>
         )
     }

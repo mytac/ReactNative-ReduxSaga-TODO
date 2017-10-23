@@ -41,9 +41,8 @@ class App extends Component {
     render() {
         const {navigate} = this.props.navigation;
         return (
-            <View style={{padding: 10, flex: 1}}>
+            <View style={{flex: 1}}>
                 <Panel/>
-                <Text>dsds</Text>
                 <MyBtn event={() => navigate('Form')}
                        myStyle={styles.roundBtnInner}
                        outerStyle={styles.btnPosition}

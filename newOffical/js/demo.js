@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {
-    Text,View
+    Text,View,StyleSheet
 } from 'react-native'
 
 export default class Form extends React.Component{
