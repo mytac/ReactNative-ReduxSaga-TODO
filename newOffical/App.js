@@ -1,26 +1,31 @@
 import React, {Component} from 'react';
 import {
-    Button,AppRegistry, Text, TextInput, View,ScrollView,FlatList,SectionList,Image
+    Button, AppRegistry, Text, TextInput, View, ScrollView, FlatList, SectionList, Image, StyleSheet
 } from 'react-native';
 
-import {StackNavigator,DrawerNavigator} from 'react-navigation'
+import {StackNavigator} from 'react-navigation'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Form from './js/Form'
 import Panel from './js/Panel'
+import MyBtn from './js/Component/Button'
+
 const uri = 'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1913196465,1576510051&fm=173&s=77C6D81FCE0A1AC84C014FFB0300702D&w=218&h=146&img.jpg'
 
+const styles = StyleSheet.create({
+    roundBtn: {
+        color: 'rgb(63, 161, 239)',
+        width: 100,
+        height: 100,
+        position: 'absolute',
+        bottom: 100,
+        right: 100
+    },
+});
+
 class App extends Component {
-    static navigationOptions={
-        title:'TO DO THINGS',
-        drawerLabel:'App',
-        drawerIcon:()=>{
-            return(
-                <Image
-                    style={{width:50,height:50}}
-                    source={{uri:uri}}
-                />
-            )
-        }
+    static navigationOptions = {
+        title: 'TO DO THINGS',
     }
 
     constructor(props) {
@@ -29,21 +34,33 @@ class App extends Component {
 
 
     render() {
-        const { navigate } = this.props.navigation;
+        const {navigate} = this.props.navigation;
         return (
-            <ScrollView style={{padding: 10}}>
+            <View style={{padding: 10, flex: 1}}>
                 <Panel/>
                 <Text>dsds</Text>
-                <Button
-                    onPress={()=>navigate('Form')}
-                    title="Greeting~~~"
+                <MyBtn event={() => navigate('Form')}
+                       myStyle={{
+                           backgroundColor: 'rgb(63, 161, 239)',
+                           alignItems: 'center',
+                           justifyContent: 'center',
+                           borderRadius: 25,
+                           width: 50,
+                           height: 50,
+                       }}
+                       outerStyle={{
+                           position: 'absolute',
+                           bottom:75,
+                           right:50
+                       }}
+                       Ele={()=><Icon name="plus" size={15} color="#fff"/>}
                 />
-            </ScrollView>
+            </View>
         );
     }
 }
 
-export default DrawerNavigator({
-    App:{screen:App},
-    Form:{screen:Form},
+export default StackNavigator({
+    App: {screen: App},
+    Form: {screen: Form},
 })
