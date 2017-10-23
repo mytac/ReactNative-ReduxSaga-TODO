@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 
 class App extends Component {
     static navigationOptions = {
-        title: 'TO DO THINGS',
+        header : null,
     }
 
     constructor(props) {
@@ -55,6 +55,8 @@ class App extends Component {
 }
 
 export default StackNavigator({
-    App: {screen: App},
+    App: {
+        screen: App,
+    },
     Form: {screen: Form},
 })
