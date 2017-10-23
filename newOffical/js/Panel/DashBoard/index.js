@@ -7,19 +7,30 @@ const url = require('../../../static/back.jpg')
 const styles = StyleSheet.create({
     mainStyle: {
         flex: 1,
-        flexDirection:'column'
     },
     backgroundStyle: {
         resizeMode: 'cover',
         flex: 1,
         width: null,
         height: null,
+        flexDirection:'row'
     },
     subStyle:{
         flex:1,
-        flexDirection:'column'
     },
+    rightColStyle:{
+        backgroundColor:'rgba(0,0,0,0.2)',
+        flex:1,
+    }
 })
+
+const RightCol=()=>{
+    return(
+        <View style={styles.rightColStyle}>
+            <Text style={{color:'#fff'}}>right</Text>
+        </View>
+    )
+}
 
 export default class Form extends React.Component {
     constructor(props) {
@@ -34,7 +45,7 @@ export default class Form extends React.Component {
                     style={styles.backgroundStyle}
                 >
                     <View style={styles.subStyle}><Text>title</Text></View>
-                    <View style={styles.subStyle}><Text>analize</Text></View>
+                    <View style={styles.subStyle}><RightCol/></View>
                 </Image>
             </View>
         )
