@@ -7,6 +7,22 @@ const styles = StyleSheet.create({
     rightColStyle:{
         backgroundColor:'rgba(0,0,0,0.2)',
         flex:1,
+    },
+    wrapper:{
+        position:'relative',
+        left:30,
+        top:80
+    },
+    whiteFont:{
+        color:'#fff',
+        fontFamily:'PlazaDReg',
+    },
+    title:{
+        fontSize:65,
+    },
+    date:{
+        fontSize:25,
+        marginTop:30
     }
 })
 
@@ -15,10 +31,19 @@ export default class LeftCol extends React.Component{
         super(props)
     }
 
+    static getLocalTime(){
+        const date=new Date()
+        return date.toLocaleDateString().split('/').join(' - ')
+    }
+
     render(){
+        const {mainStyle,wrapper,title,whiteFont,date}=styles
         return(
-            <View style={styles.mainStyle}>
-                <Text style={{color:'#fff',fontFamily:'Never say never'}}>left</Text>
+            <View style={mainStyle}>
+                <View style={wrapper}>
+                    <Text style={[whiteFont,title]}>TODO THINGS</Text>
+                    <Text style={[whiteFont,date]}>{LeftCol.getLocalTime()}</Text>
+                </View>
             </View>
         )
     }
