@@ -1,34 +1,34 @@
 import React, {Component} from 'react';
 import {
-    Text,View,TouchableOpacity,StyleSheet
+    Text, View, TouchableOpacity, StyleSheet
 } from 'react-native'
 import PropTypes from 'prop-types'
 
 const styles = StyleSheet.create({
-    crossText:{
-        color:'#fff',
+    crossText: {
+        color: '#fff',
     }
 });
 
-export default class Button extends React.Component{
-    constructor(props){
+export default class Button extends React.Component {
+    constructor(props) {
         super(props)
     }
 
-    render(){
-        const {event,myStyle,outerStyle,Ele}=this.props
-        return(
-            <TouchableOpacity onPress = {event} style={outerStyle}>
-                <View style = {myStyle}>
+    render() {
+        const {event, myStyle, outerStyle, Ele} = this.props
+        return (
+            <TouchableOpacity onPress={event} style={outerStyle}>
+                <View style={myStyle}>
                     <Ele/>
                 </View>
-                </TouchableOpacity>
+            </TouchableOpacity>
         )
     }
 }
 
-Button.propTypes={
-    event:PropTypes.func.isRequired,
-    myStyle:PropTypes.object.isRequired,
-    outerStyle:PropTypes.object.isRequired,
+Button.propTypes = {
+    event: PropTypes.func.isRequired,
+    myStyle: PropTypes.number.isRequired,
+    outerStyle: PropTypes.number.isRequired,
 }
