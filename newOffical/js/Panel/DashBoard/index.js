@@ -3,6 +3,8 @@ import {
     Text, View, StyleSheet, Image,
 } from 'react-native'
 
+import LeftCol from './LeftCol'
+import RightCol from './RightCol'
 const url = require('../../../static/back.jpg')
 const styles = StyleSheet.create({
     mainStyle: {
@@ -13,7 +15,6 @@ const styles = StyleSheet.create({
         flex: 1,
         width: null,
         height: null,
-        flexDirection:'row'
     },
     subStyle:{
         flex:1,
@@ -23,14 +24,6 @@ const styles = StyleSheet.create({
         flex:1,
     }
 })
-
-const RightCol=()=>{
-    return(
-        <View style={styles.rightColStyle}>
-            <Text style={{color:'#fff'}}>right</Text>
-        </View>
-    )
-}
 
 export default class Form extends React.Component {
     constructor(props) {
@@ -44,8 +37,11 @@ export default class Form extends React.Component {
                     source={url}
                     style={styles.backgroundStyle}
                 >
-                    <View style={styles.subStyle}><Text>title</Text></View>
-                    <View style={styles.subStyle}><RightCol/></View>
+                    <View style={{flexDirection:'row',flex:1}}>
+                        <View style={styles.subStyle}><LeftCol/></View>
+                        <View style={styles.subStyle}><RightCol/></View>
+                    </View>
+                    <View style={{height:5,backgroundColor:'pink'}}></View>
                 </Image>
             </View>
         )

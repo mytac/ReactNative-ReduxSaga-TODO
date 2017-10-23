@@ -48,6 +48,8 @@
 		7B19E87A1FE844959CFCA0FF /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E847A8CFC6A84AC9ACD5C3F9 /* Octicons.ttf */; };
 		B0F9FEF50CC247279B3865EB /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21F0E547859B4C1C9599F11A /* SimpleLineIcons.ttf */; };
 		862A30D85EF3437A88E655F7 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 396A298B58C1464BB837CB6D /* Zocial.ttf */; };
+		67C0D655F12544A895DC5305 /* Never say never.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD12E0F23472487D8BFBED04 /* Never say never.ttf */; };
+		CD0AE5FCA74A484FB10A043C /* PlazaDReg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCF1A83A69C140178AB2E12B /* PlazaDReg.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,6 +290,8 @@
 		E847A8CFC6A84AC9ACD5C3F9 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		21F0E547859B4C1C9599F11A /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		396A298B58C1464BB837CB6D /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FD12E0F23472487D8BFBED04 /* Never say never.ttf */ = {isa = PBXFileReference; name = "Never say never.ttf"; path = "../static/fonts/Never say never.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BCF1A83A69C140178AB2E12B /* PlazaDReg.ttf */ = {isa = PBXFileReference; name = "PlazaDReg.ttf"; path = "../static/fonts/PlazaDReg.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -546,6 +550,8 @@
 				E847A8CFC6A84AC9ACD5C3F9 /* Octicons.ttf */,
 				21F0E547859B4C1C9599F11A /* SimpleLineIcons.ttf */,
 				396A298B58C1464BB837CB6D /* Zocial.ttf */,
+				FD12E0F23472487D8BFBED04 /* Never say never.ttf */,
+				BCF1A83A69C140178AB2E12B /* PlazaDReg.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -931,6 +937,8 @@
 				7B19E87A1FE844959CFCA0FF /* Octicons.ttf in Resources */,
 				B0F9FEF50CC247279B3865EB /* SimpleLineIcons.ttf in Resources */,
 				862A30D85EF3437A88E655F7 /* Zocial.ttf in Resources */,
+				67C0D655F12544A895DC5305 /* Never say never.ttf in Resources */,
+				CD0AE5FCA74A484FB10A043C /* PlazaDReg.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
