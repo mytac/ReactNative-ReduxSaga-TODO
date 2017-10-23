@@ -13,14 +13,19 @@ import MyBtn from './js/Component/Button'
 const uri = 'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1913196465,1576510051&fm=173&s=77C6D81FCE0A1AC84C014FFB0300702D&w=218&h=146&img.jpg'
 
 const styles = StyleSheet.create({
-    roundBtn: {
-        color: 'rgb(63, 161, 239)',
-        width: 100,
-        height: 100,
-        position: 'absolute',
-        bottom: 100,
-        right: 100
+    roundBtnInner: {
+        backgroundColor: 'rgb(63, 161, 239)',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 25,
+        width: 50,
+        height: 50,
     },
+    btnPosition:{
+        position: 'absolute',
+        bottom:75,
+        right:50
+    }
 });
 
 class App extends Component {
@@ -40,19 +45,8 @@ class App extends Component {
                 <Panel/>
                 <Text>dsds</Text>
                 <MyBtn event={() => navigate('Form')}
-                       myStyle={{
-                           backgroundColor: 'rgb(63, 161, 239)',
-                           alignItems: 'center',
-                           justifyContent: 'center',
-                           borderRadius: 25,
-                           width: 50,
-                           height: 50,
-                       }}
-                       outerStyle={{
-                           position: 'absolute',
-                           bottom:75,
-                           right:50
-                       }}
+                       myStyle={styles.roundBtnInner}
+                       outerStyle={styles.btnPosition}
                        Ele={()=><Icon name="plus" size={15} color="#fff"/>}
                 />
             </View>
