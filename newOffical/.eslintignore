@@ -1,0 +1,5 @@
+dist/*
+lib/*
+build/*
+coverage/*
+node_modules/*
