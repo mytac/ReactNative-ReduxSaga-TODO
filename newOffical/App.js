@@ -17,9 +17,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(63, 161, 239)',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 25,
-        width: 50,
-        height: 50,
+        borderRadius: 40,
+        width: 80,
+        height: 80,
     },
     btnPosition:{
         position: 'absolute',
@@ -46,7 +46,7 @@ class App extends Component {
                 <MyBtn event={() => navigate('Form')}
                        myStyle={styles.roundBtnInner}
                        outerStyle={styles.btnPosition}
-                       Ele={()=><Icon name="plus" size={15} color="#fff"/>}
+                       Ele={()=><Icon name="plus" size={20} color="#fff"/>}
                 />
             </View>
         );

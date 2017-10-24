@@ -28,8 +28,8 @@ export default class RightCol extends React.Component {
     return (
       <View style={mainStyle}>
         <View style={wrapper}>
-          <DigitSquare type="Personal" num={10} />
-          <DigitSquare type="Business" num={10} />
+          <DigitSquare />
+          <DigitSquare />
         </View>
       </View>
     );

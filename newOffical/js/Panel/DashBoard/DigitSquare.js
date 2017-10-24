@@ -36,3 +36,8 @@ DigitSquare.propTypes = {
   num: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
 };
+
+DigitSquare.defaultProps = {
+  num: 0,
+  type: 'Personal',
+};
