@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Text, View, StyleSheet,
+  Text, View,
 } from 'react-native';
 
 export default class Form extends React.Component {
@@ -10,8 +10,8 @@ export default class Form extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text>Form</Text>
+      <View style={{ flex: 1 }}>
+        <Text>list</Text>
       </View>
     );
   }
