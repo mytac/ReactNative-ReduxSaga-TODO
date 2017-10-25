@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 
 import DigitSquare from './DigitSquare';
+import ProgressRound from './ProgressRound';
 
 const styles = StyleSheet.create({
   mainStyle: {
@@ -11,8 +12,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   wrapper: {
-    position: 'relative',
-    top: 130,
+    marginTop: 130,
     flexDirection: 'row',
     paddingRight: 20,
   },
@@ -30,6 +30,9 @@ export default class RightCol extends React.Component {
         <View style={wrapper}>
           <DigitSquare />
           <DigitSquare />
+        </View>
+        <View>
+          <ProgressRound />
         </View>
       </View>
     );
