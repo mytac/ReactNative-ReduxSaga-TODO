@@ -42,7 +42,7 @@ export default function Form(props) {
           colors={['#295cce', '#14b7e6', '#dddae4']}
           end={{ x: 1, y: 0 }}
           locations={[0, ratio * 0.01, 0]}
-          style={{ height: 8, backgroundColor: 'pink' }}
+          style={{ height: 8 }}
         />
       </Image>
     </View>
