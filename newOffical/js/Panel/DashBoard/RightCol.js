@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import {
-  Text, View, StyleSheet,
-} from 'react-native';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 import DigitSquare from './DigitSquare';
 import ProgressRound from './ProgressRound';
@@ -18,23 +17,24 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class RightCol extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { mainStyle, wrapper } = styles;
-    return (
-      <View style={mainStyle}>
-        <View style={wrapper}>
-          <DigitSquare />
-          <DigitSquare />
-        </View>
-        <View>
-          <ProgressRound />
-        </View>
+export default function RightCol({ personalNum, businessNum, ratio }) {
+  const { mainStyle, wrapper } = styles;
+  return (
+    <View style={mainStyle}>
+      <View style={wrapper}>
+        <DigitSquare num={personalNum} type="Personal" />
+        <DigitSquare num={businessNum} type="Business" />
       </View>
-    );
-  }
+      <View>
+        <ProgressRound ratio={ratio} />
+      </View>
+    </View>
+  );
 }
+
+RightCol.propTypes = {
+  personalNum: PropTypes.number.isRequired,
+  businessNum: PropTypes.number.isRequired,
+  ratio: PropTypes.number.isRequired,
+};
+

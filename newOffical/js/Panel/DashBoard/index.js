@@ -26,8 +26,19 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Form(props) {
-  const { ratio } = props;
+// 处理数组
+const handleData = (data) => {
+  const Len = data.length;
+  const personalNum = data.filter(item => item.type === 'personal').length;
+  const businessNum = data.length - personalNum;
+  const ratio = (data.filter(item => item.isDone).length / Len).toFixed(3) * 100;
+  return { personalNum, businessNum, ratio };
+};
+
+
+export default function DashBoard({ data }) {
+  const { personalNum, businessNum, ratio } = handleData(data);
+
   return (
     <View style={styles.mainStyle}>
       <Image
@@ -36,7 +47,13 @@ export default function Form(props) {
       >
         <View style={{ flexDirection: 'row', flex: 1 }}>
           <View style={styles.subStyle}><LeftCol /></View>
-          <View style={styles.subStyle}><RightCol /></View>
+          <View style={styles.subStyle}>
+            <RightCol
+              personalNum={personalNum}
+              businessNum={businessNum}
+              ratio={ratio}
+            />
+          </View>
         </View>
         <LinearGradient
           colors={['#295cce', '#14b7e6', '#dddae4']}
@@ -49,10 +66,6 @@ export default function Form(props) {
   );
 }
 
-Form.propTypes = {
-  ratio: PropTypes.number.isRequired,
-};
-
-Form.defaultProps = {
-  ratio: 0,
+DashBoard.propTypes = {
+  data: PropTypes.array.isRequired,
 };

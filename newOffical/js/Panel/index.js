@@ -5,10 +5,11 @@ import DashBoard from './DashBoard';
 import List from './List';
 import BottomBar from './BottomBar';
 
+
 export default function Panel({ data }) {
   return (
     <View style={{ flex: 10 }}>
-      <DashBoard />
+      <DashBoard data={data} />
       <List data={data} />
       <BottomBar />
     </View>
