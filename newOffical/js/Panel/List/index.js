@@ -22,7 +22,7 @@ export default class Form extends React.Component {
   render() {
     const { text, title } = styles;
     return (
-      <ScrollView style={{ flex: 1, padding: 15 }}>
+      <ScrollView style={{ flex: 1, padding: 15, backgroundColor: '#fff' }}>
         <Text style={[text, title]}>Inbox</Text>
         <View>
           <ListItem />
