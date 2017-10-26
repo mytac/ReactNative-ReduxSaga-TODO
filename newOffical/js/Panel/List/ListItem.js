@@ -46,8 +46,9 @@ const TextRow = ({ texts, color, size }) => (
 export default class ListItem extends React.Component {
   constructor(props) {
     super(props);
+    const { isDone } = this.props.item;
     this.state = {
-      isDone: this.props.isDone,
+      isDone,
     };
     this.toggleClick = this.toggleClick.bind(this);
   }
@@ -60,7 +61,7 @@ export default class ListItem extends React.Component {
 
   render() {
     const { wrapper } = styles;
-    const { title, description, date } = this.props;
+    const { title, description, time } = this.props.item;
     const { isDone } = this.state;
     return (
       <View style={wrapper}>
@@ -71,17 +72,14 @@ export default class ListItem extends React.Component {
           <TextRow texts={title} color={'#000'} size={20} />
           <TextRow texts={description} color={'#788a94'} size={20} />
         </View>
-        <Text style={{ flex: 0.5, fontFamily: 'Never say never' }}>{date}</Text>
+        <Text style={{ flex: 0.5, fontFamily: 'Never say never' }}>{time}</Text>
       </View>
     );
   }
 }
 
 ListItem.propTypes = {
-  isDone: PropTypes.bool.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  item: PropTypes.object.isRequired,
 };
 
 ToggleBtn.propTypes = {

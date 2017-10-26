@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Text, View, ScrollView, StyleSheet,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import ListItem from './ListItem';
 
@@ -21,13 +22,18 @@ export default class Form extends React.Component {
 
   render() {
     const { text, title } = styles;
+    const { data } = this.props;
     return (
       <ScrollView style={{ flex: 1, padding: 15, backgroundColor: '#fff' }}>
         <Text style={[text, title]}>Inbox</Text>
         <View>
-          <ListItem />
+          {data.map((item, index) => (<ListItem item={item} key={index} />))}
         </View>
       </ScrollView>
     );
   }
 }
+
+Form.propTypes = {
+  data: PropTypes.array.isRequired,
+};
