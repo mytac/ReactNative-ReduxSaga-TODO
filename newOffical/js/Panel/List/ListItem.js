@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     height: 100,
-    borderBottomColor: '#e7dfdf',
-    borderBottomWidth: 3,
+    borderBottomColor: '#ddd',
+    borderBottomWidth: 2,
     padding: 10,
     flexDirection: 'row',
   },
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 10,
-
+    marginTop: 10,
   },
   icon: {
   },
@@ -37,30 +37,56 @@ const ToggleBtn = ({ isCheck }) => (
 
 );
 
-const TextRow = ({ texts, colors }) => (
-  <View style={{ flex: 1 }}><Text color={colors}>{texts}</Text></View>
+const TextRow = ({ texts, color, size }) => (
+  <View style={{ flex: 1 }}><Text style={{ fontSize: size, color, fontFamily: 'Never say never' }}>{texts}</Text></View>
 );
 
-export default function ListItem() {
-  const { wrapper } = styles;
-  return (
-    <View style={wrapper}>
-      <View style={[{ flex: 0.8 }]}>
-        <ToggleBtn />
+export default class ListItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { wrapper } = styles;
+    const { isDone, title, description, date } = this.props;
+    return (
+      <View style={wrapper}>
+        <View style={[{ flex: 0.8 }]}>
+          <ToggleBtn isCheck={isDone} />
+        </View>
+        <View style={{ flex: 3, flexDirection: 'column' }}>
+          <TextRow texts={title} color={'#000'} size={20} />
+          <TextRow texts={description} color={'#788a94'} size={20} />
+        </View>
+        <Text style={{ flex: 0.5, fontFamily: 'Never say never' }}>{date}</Text>
       </View>
-      <View style={{ flex: 3, flexDirection: 'column' }}>
-        <TextRow texts={'Title'} colors={'#000'} />
-        <TextRow texts={'Description'} colors={'#ddd'} />
-      </View>
-      <Text style={{ flex: 0.5 }}>ListItem</Text>
-    </View>
-  );
+    );
+  }
 }
 
-ToggleBtn.propTypes = {
-  isCheck: PropTypes.bool.isRequired,
+ListItem.propTypes = {
+  isDone: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
 };
 
-ToggleBtn.defaultPropTypes = {
+ToggleBtn.propTypes = {
+  isCheck: PropTypes.bool,
+};
+
+ToggleBtn.defaultProps = {
   isCheck: false,
+};
+
+TextRow.propTypes = {
+  texts: PropTypes.string,
+  color: PropTypes.string,
+  size: PropTypes.number,
+};
+
+TextRow.defaultProps = {
+  texts: '',
+  color: '#000',
+  size: 15,
 };
