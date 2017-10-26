@@ -18,6 +18,7 @@ module.exports = {
         }],
         "global-require": "off",
         "jsx-a11y/no-static-element-interactions": "off",
-        "react/no-array-index-key":"off"
+        "react/no-array-index-key":"off",
+        "react/forbid-prop-types":"off"
     },
 };
