@@ -10,7 +10,7 @@ const url = require('../../../static/back.jpg');
 
 const styles = StyleSheet.create({
   mainStyle: {
-    flex: 0.7,
+    flex: 0.9,
   },
   backgroundStyle: {
     resizeMode: 'cover',

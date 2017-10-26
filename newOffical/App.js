@@ -17,6 +17,8 @@ const data = [
     { time: '10:22', isDone: true, title: 'xxxx', description: 'bla bla bla' },
     { time: '10:23', isDone: true, title: 'xxxx', description: 'bla bla bla' },
     { time: '10:24', isDone: true, title: 'xxxx', description: 'bla bla bla' },
+    { time: '10:24', isDone: true, title: 'xxxx', description: 'bla bla bla' },
+    { time: '10:24', isDone: true, title: 'xxxx', description: 'bla bla bla' },
 ];
 
 const styles = StyleSheet.create({

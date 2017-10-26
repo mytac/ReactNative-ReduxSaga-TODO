@@ -24,7 +24,7 @@ export default class Form extends React.Component {
     const { text, title } = styles;
     const { data } = this.props;
     return (
-      <ScrollView style={{ flex: 1, padding: 15, backgroundColor: '#fff' }}>
+      <ScrollView style={{ flex: 0.8, padding: 15, backgroundColor: '#fff' }}>
         <Text style={[text, title]}>Inbox</Text>
         <View>
           {data.map((item, index) => (<ListItem item={item} key={index} />))}
