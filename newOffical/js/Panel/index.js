@@ -6,11 +6,11 @@ import List from './List';
 import BottomBar from './BottomBar';
 
 
-export default function Panel({ data }) {
+export default function Panel({ data, toggleEvent }) {
   return (
     <View style={{ flex: 10 }}>
       <DashBoard data={data} />
-      <List data={data} />
+      <List data={data} toggleEvent={toggleEvent} />
       <BottomBar />
     </View>
   );
@@ -18,4 +18,5 @@ export default function Panel({ data }) {
 
 Panel.propTypes = {
   data: PropTypes.array.isRequired,
+  toggleEvent: PropTypes.func.isRequired,
 };

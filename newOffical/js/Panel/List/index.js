@@ -22,12 +22,12 @@ export default class Form extends React.Component {
 
   render() {
     const { text, title } = styles;
-    const { data } = this.props;
+    const { data, toggleEvent } = this.props;
     return (
       <ScrollView style={{ flex: 0.8, padding: 15, backgroundColor: '#fff' }}>
         <Text style={[text, title]}>Inbox</Text>
         <View>
-          {data.map((item, index) => (<ListItem item={item} key={index} />))}
+          {data.map((item, index) => (<ListItem item={item} key={index} toggleEvent={() => toggleEvent(index)} />))}
         </View>
       </ScrollView>
     );
@@ -36,4 +36,5 @@ export default class Form extends React.Component {
 
 Form.propTypes = {
   data: PropTypes.array.isRequired,
+  toggleEvent: PropTypes.func.isRequired,
 };
