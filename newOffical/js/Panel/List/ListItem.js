@@ -5,6 +5,8 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 
+import Button from '../../Component/Button';
+
 const styles = StyleSheet.create({
   middle: {
     justifyContent: 'center',
@@ -44,15 +46,26 @@ const TextRow = ({ texts, color, size }) => (
 export default class ListItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isDone: this.props.isDone,
+    };
+    this.toggleClick = this.toggleClick.bind(this);
+  }
+
+  toggleClick() {
+    this.setState({
+      isDone: !this.state.isDone,
+    });
   }
 
   render() {
     const { wrapper } = styles;
-    const { isDone, title, description, date } = this.props;
+    const { title, description, date } = this.props;
+    const { isDone } = this.state;
     return (
       <View style={wrapper}>
         <View style={[{ flex: 0.8 }]}>
-          <ToggleBtn isCheck={isDone} />
+          <Button event={this.toggleClick} Ele={() => <ToggleBtn isCheck={isDone} />} />
         </View>
         <View style={{ flex: 3, flexDirection: 'column' }}>
           <TextRow texts={title} color={'#000'} size={20} />
