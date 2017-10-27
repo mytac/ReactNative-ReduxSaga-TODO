@@ -23,6 +23,9 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
     this.openTimePicker = this.openTimePicker.bind(this);
+    this.state = {
+      time: '',
+    };
   }
 
   async openTimePicker() {
@@ -33,8 +36,9 @@ class Form extends React.Component {
         is24Hour: true, // Will display '2 PM'
       });
       if (action !== TimePickerAndroid.dismissedAction) {
-        // console.log(hour);
-        // Selected hour (0-23), minute (0-59)
+        this.setState({
+          time: `${hour}:${minute}`,
+        });
       }
     } catch ({ code, message }) {
       console.warn('Cannot open time picker', message);
@@ -43,12 +47,14 @@ class Form extends React.Component {
 
   render() {
     const { title, input } = styles;
+    const { time } = this.state;
     return (
       <View style={{ backgroundColor: '#2f258a', flex: 1, padding: 20 }}>
         <Text style={title}>Add new things</Text>
         <TextInput
           style={input}
           onFocus={() => this.openTimePicker()}
+          value={time}
         />
         <Button
           onPress={this.openTimePicker}
