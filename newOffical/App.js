@@ -84,5 +84,10 @@ export default StackNavigator({
       header: null,
     },
   },
-  Form: { screen: Form },
+  Form: {
+    screen: Form,
+    navigationOptions: {
+      header: null,
+    },
+  },
 });

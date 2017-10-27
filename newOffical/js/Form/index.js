@@ -1,42 +1,66 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
-    Text,View,Image,Button
-} from 'react-native'
+  Text, View, Image, Button, StyleSheet, TimePickerAndroid, TextInput,
+} from 'react-native';
 
-import {StackNavigator,DrawerNavigator} from 'react-navigation'
+const styles = StyleSheet.create({
+  title: {
+    color: '#fff',
+    fontFamily: 'Never say never',
+    fontSize: 25,
+    textAlign: 'center',
+  },
+  input: { height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    backgroundColor: '#fff',
+    width: 120,
+    borderRadius: 4,
+  },
+});
 
-import App from '../../App'
-const uri = 'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1913196465,1576510051&fm=173&s=77C6D81FCE0A1AC84C014FFB0300702D&w=218&h=146&img.jpg'
+class Form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.openTimePicker = this.openTimePicker.bind(this);
+  }
 
-class Form extends React.Component{
-    static navigationOptions={
-        title:'Form',
-        drawerLabel:'Form',
-        drawerIcon:()=>{
-            return(
-                <Image
-                    style={{width:50,height:50}}
-                    source={{uri:uri}}
-                />
-            )
-        }
+  async openTimePicker() {
+    try {
+      const { action, hour, minute } = await TimePickerAndroid.open({
+        hour: 0,
+        minute: 0,
+        is24Hour: true, // Will display '2 PM'
+      });
+      if (action !== TimePickerAndroid.dismissedAction) {
+        // console.log(hour);
+        // Selected hour (0-23), minute (0-59)
+      }
+    } catch ({ code, message }) {
+      console.warn('Cannot open time picker', message);
     }
+  }
 
-    constructor(props){
-        super(props)
-    }
-
-    render(){
-        return(
-            <View>
-                <Text>Form</Text>
-                <Button
-                    onPress={()=>this.props.navigation.goBack()}
-                    title="Go back"
-                />
-            </View>
-        )
-    }
+  render() {
+    const { title, input } = styles;
+    return (
+      <View style={{ backgroundColor: '#2f258a', flex: 1, padding: 20 }}>
+        <Text style={title}>Add new things</Text>
+        <TextInput
+          style={input}
+          onFocus={() => this.openTimePicker()}
+        />
+        <Button
+          onPress={this.openTimePicker}
+          title="openPicker"
+        />
+        <Button
+          onPress={() => this.props.navigation.goBack()}
+          title="Go back"
+        />
+      </View>
+    );
+  }
 }
 
-export default Form
+export default Form;
