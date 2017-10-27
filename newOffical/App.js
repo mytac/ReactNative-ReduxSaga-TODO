@@ -10,7 +10,6 @@ import Form from './js/Form';
 import Panel from './js/Panel';
 import MyBtn from './js/Component/Button';
 
-const uri = 'https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1913196465,1576510051&fm=173&s=77C6D81FCE0A1AC84C014FFB0300702D&w=218&h=146&img.jpg';
 
 const data = [
   { time: '10:21', isDone: true, title: 'xxxx', description: 'bla bla bla', type: 'personal' },
@@ -20,14 +19,6 @@ const data = [
   { time: '10:24', isDone: false, title: 'xxxx', description: 'bla bla bla', type: 'personal' },
   { time: '10:24', isDone: true, title: 'xxxx', description: 'bla bla bla', type: 'personal' },
 ];
-//
-/* const toggleComplete=(data,choseIdx)=>data.map((item,index)=>{
-    if(choseIdx===index){
-        return Object.assign({},item,{
-            isDone:!item.isDone
-        })
-    }
-}) */
 
 const styles = StyleSheet.create({
   roundBtnInner: {

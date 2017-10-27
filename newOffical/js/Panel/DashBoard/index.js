@@ -26,20 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-// 处理数组
-const handleData = (data) => {
-  const Len = data.length;
-  const personalNum = data.filter(item => item.type && item.type === 'personal').length;
-  const businessNum = data.length - personalNum;
-  const completeNum = data.filter(item => item.isDone).length;
-  const ratio = (completeNum / Len).toFixed(3) * 100;
-  return { personalNum, businessNum, ratio, completeNum };
-};
-
-
-export default function DashBoard({ data }) {
-  const { personalNum, businessNum, ratio } = handleData(data);
-
+export default function DashBoard({ personalNum, businessNum, ratio }) {
   return (
     <View style={styles.mainStyle}>
       <Image
@@ -68,5 +55,7 @@ export default function DashBoard({ data }) {
 }
 
 DashBoard.propTypes = {
-  data: PropTypes.array.isRequired,
+  personalNum: PropTypes.number.isRequired,
+  businessNum: PropTypes.number.isRequired,
+  ratio: PropTypes.number.isRequired,
 };
