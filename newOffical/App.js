@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Button, AppRegistry, Text, TextInput, View, ScrollView, FlatList, SectionList, Image, StyleSheet,
+  Button, AppRegistry, Text, TextInput, View, ScrollView, FlatList, SectionList, Image, StyleSheet, PixelRatio,
 } from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
@@ -20,19 +20,21 @@ const data = [
   { time: '10:24', isDone: true, title: 'xxxx', description: 'bla bla bla', type: 'personal' },
 ];
 
+const dpi = PixelRatio.get();
+
 const styles = StyleSheet.create({
   roundBtnInner: {
     backgroundColor: 'rgb(63, 161, 239)',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 40,
-    width: 80,
-    height: 80,
+    borderRadius: 90 / dpi,
+    width: 180 / dpi,
+    height: 180 / dpi,
   },
   btnPosition: {
     position: 'absolute',
-    bottom: 75,
-    right: 50,
+    bottom: 100 / dpi,
+    right: 100 / dpi,
   },
 });
 
@@ -70,7 +72,7 @@ class App extends Component {
           event={() => navigate('Form')}
           myStyle={styles.roundBtnInner}
           outerStyle={styles.btnPosition}
-          Ele={() => <Icon name="plus" size={20} color="#fff" />}
+          Ele={() => <Icon name="plus" size={40 / dpi} color="#fff" />}
         />
       </View>
     );

@@ -1,32 +1,34 @@
 import React from 'react';
 import {
-  Text, View, StyleSheet,
+  Text, View, StyleSheet, PixelRatio,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
 
+const dpi = PixelRatio.get();
 const styles = StyleSheet.create({
   main: {
-    flex: 0.15,
+    flex: 0.1,
     backgroundColor: '#fff',
     flexDirection: 'row',
   },
   text: {
     fontFamily: 'Never say never',
+    fontSize: 30 / dpi,
   },
   row: {
-    margin: 15,
+    margin: 30 / dpi,
   },
   badge: {
     backgroundColor: '#a1acb5',
-    width: 25,
-    height: 25,
-    borderRadius: 12.5,
+    width: 50 / dpi,
+    height: 50 / dpi,
+    borderRadius: 25 / dpi,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    left: -20,
-    top: -2.5,
+    left: -40 / dpi,
+    top: -5 / dpi,
   },
 });
 
