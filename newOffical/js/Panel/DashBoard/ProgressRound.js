@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, PixelRatio } from 'react-native';
 import PropTypes from 'prop-types';
 import Svg, { Circle } from 'react-native-svg';
 
+const dpi = PixelRatio.get();
 const styles = StyleSheet.create({
   main: {
 
@@ -10,15 +11,15 @@ const styles = StyleSheet.create({
   text: {
     color: '#fff',
     position: 'absolute',
-    right: 35,
-    top: 8,
+    right: 70 / dpi,
+    top: 16 / dpi,
     fontFamily: 'Never say never',
-    fontSize: 18,
+    fontSize: 36 / dpi,
   },
   roundWrapper: {
     position: 'relative',
-    left: 50,
-    top: -15,
+    left: 100 / dpi,
+    top: -10 / dpi,
   },
 });
 
@@ -30,26 +31,26 @@ export default function ProgressRound(props) {
     <View style={main}>
       <View style={roundWrapper}>
         <Svg
-          height="50"
-          width="50"
+          height={100 / dpi}
+          width={100 / dpi}
         >
           <Circle
-            cx="25"
-            cy="25"
-            r="20"
+            cx={50 / dpi}
+            cy={50 / dpi}
+            r={40 / dpi}
             stroke="#295cce"
-            strokeWidth="5"
+            strokeWidth={10 / dpi}
             fill="none"
           />
           <Circle
-            cx="25"
-            cy="25"
-            r="20"
+            cx={50 / dpi}
+            cy={50 / dpi}
+            r={40 / dpi}
             stroke="#14b7e6"
-            strokeWidth="5"
+            strokeWidth={10 / dpi}
             fill="none"
             transform={{ matrix: '(0,-1,1,0,0,440)' }}
-            strokeDasharray={[ratio * 1.25, 1049]}
+            strokeDasharray={[ratio * (2.55 / dpi), 1049]}
           />
 
         </Svg>

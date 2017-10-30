@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, PixelRatio } from 'react-native';
 import PropTypes from 'prop-types';
 
 import DigitSquare from './DigitSquare';
 import ProgressRound from './ProgressRound';
+
+const dpi = PixelRatio.get();
 
 const styles = StyleSheet.create({
   mainStyle: {
@@ -11,9 +13,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   wrapper: {
-    marginTop: 130,
+    marginTop: 260 / dpi,
     flexDirection: 'row',
-    paddingRight: 20,
+    paddingRight: 40 / dpi,
   },
 });
 

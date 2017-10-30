@@ -1,20 +1,22 @@
 import React from 'react';
 import {
-  Text, View, StyleSheet,
+  Text, View, StyleSheet, PixelRatio,
 } from 'react-native';
 import PropTypes from 'prop-types';
+
+const dpi = PixelRatio.get();
 
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-    height: 120,
-    padding: 15,
+    height: 240 / dpi,
+    padding: 45 / dpi,
   },
   plazaFont: {
     fontFamily: 'Never say never',
   },
   text: {
-    fontSize: 20,
+    fontSize: 40 / dpi,
     flex: 1,
     textAlign: 'right',
     color: '#fff',

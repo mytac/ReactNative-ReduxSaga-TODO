@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import {
-  Text, View, StyleSheet,
+  Text, View, StyleSheet, PixelRatio,
 } from 'react-native';
+
+// 屏幕适配
+const dpi = PixelRatio.get();
 
 const styles = StyleSheet.create({
   rightColStyle: {
@@ -10,19 +13,19 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     position: 'relative',
-    left: 30,
-    top: 80,
+    left: 75 / dpi,
+    top: 225 / dpi,
   },
   whiteFont: {
     color: '#fff',
     fontFamily: 'PlazaDReg',
   },
   title: {
-    fontSize: 65,
+    fontSize: 120 / dpi,
   },
   date: {
-    fontSize: 25,
-    marginTop: 30,
+    fontSize: 54 / dpi,
+    marginTop: 75 / dpi,
   },
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, PixelRatio } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import PropTypes from 'prop-types';
 
@@ -7,6 +7,8 @@ import LeftCol from './LeftCol';
 import RightCol from './RightCol';
 
 const url = require('../../../static/back.jpg');
+
+const dpi = PixelRatio.get();
 
 const styles = StyleSheet.create({
   mainStyle: {
@@ -47,7 +49,7 @@ export default function DashBoard({ personalNum, businessNum, ratio }) {
           colors={['#295cce', '#14b7e6', '#dddae4']}
           end={{ x: 1, y: 0 }}
           locations={[0, ratio * 0.01, 0]}
-          style={{ height: 8 }}
+          style={{ height: 16 / dpi }}
         />
       </Image>
     </View>
