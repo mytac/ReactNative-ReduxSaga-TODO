@@ -1,31 +1,32 @@
 import React from 'react';
 import {
-  Text, View, StyleSheet,
+  Text, View, StyleSheet, PixelRatio,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 
 import Button from '../../Component/Button';
 
+const dpi = PixelRatio.get();
 const styles = StyleSheet.create({
   middle: {
     justifyContent: 'center',
     alignItems: 'center',
   },
   wrapper: {
-    height: 100,
+    height: 200 / dpi,
     borderBottomColor: '#ddd',
-    borderBottomWidth: 2,
-    padding: 10,
+    borderBottomWidth: 4 / dpi,
+    padding: 20 / dpi,
     flexDirection: 'row',
   },
   checkBox: {
-    borderWidth: 2,
+    borderWidth: 4 / dpi,
     borderColor: '#2870a9',
-    width: 50,
-    height: 50,
-    borderRadius: 10,
-    marginTop: 10,
+    width: 100 / dpi,
+    height: 100 / dpi,
+    borderRadius: 20 / dpi,
+    marginTop: 20 / dpi,
   },
   icon: {
   },
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
 
 const ToggleBtn = ({ isCheck }) => (
   <View style={[styles.checkBox, styles.middle]}>
-    <Icon name={isCheck ? 'check-circle-o' : 'circle-o'} size={28} color="#2870a9" style={styles.icon} />
+    <Icon name={isCheck ? 'check-circle-o' : 'circle-o'} size={56 / dpi} color="#2870a9" style={styles.icon} />
   </View>
 
 );
@@ -64,10 +65,10 @@ export default class ListItem extends React.Component {
           <Button event={this.props.toggleEvent} Ele={() => <ToggleBtn isCheck={isDone} />} />
         </View>
         <View style={{ flex: 3, flexDirection: 'column' }}>
-          <TextRow texts={title} color={'#000'} size={20} />
-          <TextRow texts={description} color={'#788a94'} size={20} />
+          <TextRow texts={title} color={'#000'} size={40 / dpi} />
+          <TextRow texts={description} color={'#788a94'} size={40 / dpi} />
         </View>
-        <Text style={{ flex: 0.5, fontFamily: 'Never say never' }}>{time}</Text>
+        <Text style={{ flex: 0.5, fontFamily: 'Never say never', fontSize: 35 / dpi }}>{time}</Text>
       </View>
     );
   }
