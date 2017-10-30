@@ -10,6 +10,7 @@ import Form from './js/Form';
 import Panel from './js/Panel';
 import MyBtn from './js/Component/Button';
 
+import transferByDpi from './js/utils/transferByDpi';
 
 const data = [
   { time: '10:21', isDone: true, title: 'xxxx', description: 'bla bla bla', type: 'personal' },
@@ -22,21 +23,21 @@ const data = [
 
 const dpi = PixelRatio.get();
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create(transferByDpi({
   roundBtnInner: {
     backgroundColor: 'rgb(63, 161, 239)',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 90 / dpi,
-    width: 180 / dpi,
-    height: 180 / dpi,
+    borderRadius: 90,
+    width: 180,
+    height: 180,
   },
   btnPosition: {
     position: 'absolute',
-    bottom: 100 / dpi,
-    right: 100 / dpi,
+    bottom: 100,
+    right: 100,
   },
-});
+}));
 
 class App extends Component {
   constructor(props) {
