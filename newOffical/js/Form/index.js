@@ -29,7 +29,7 @@ const styles = StyleSheet.create(transferByDpi({
   },
   timePicker: {
     backgroundColor: '#fff',
-    width: 180,
+    width: 220,
     height: 80,
     fontSize: 50,
     borderRadius: 10,
@@ -90,11 +90,13 @@ class Form extends React.Component {
     };
   }
 
+  // 打开时间选择框
   async openTimePicker() {
     try {
+      const [h, m] = this.state.time.split(':'); // 获取当前选择框内的时间
       const { action, hour, minute } = await TimePickerAndroid.open({
-        hour: 0,
-        minute: 0,
+        hour: parseInt(h, 10),
+        minute: parseInt(m, 10),
         is24Hour: true, // Will display '2 PM'
       });
       if (action !== TimePickerAndroid.dismissedAction) {
@@ -135,9 +137,11 @@ class Form extends React.Component {
           <TouchableWithoutFeedback
             onPress={() => this.openTimePicker()}
           >
-            <Text
-              style={timePicker}
-            >{time}</Text>
+            <View>
+              <Text
+                style={timePicker}
+              >{time}</Text>
+            </View>
           </TouchableWithoutFeedback>
           <RadioForm
             formHorizontal
