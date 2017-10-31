@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
-  Button, AppRegistry, Text, TextInput, View, ScrollView, FlatList, SectionList, Image, StyleSheet
+  Button, AppRegistry, Text, TextInput, View, ScrollView, FlatList, SectionList, Image, StyleSheet,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import { StackNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -92,3 +93,7 @@ export default StackNavigator({
     },
   },
 });
+
+App.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
