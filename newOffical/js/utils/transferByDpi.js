@@ -14,7 +14,7 @@ export default function transfer(styles) {
     ks.forEach((per) => {
       const obj = styles[key];
       const val = obj[per];
-      if (!isNaN(val)) {
+      if (!isNaN(val) && per !== 'flex') {
         obj[per] = val / dpi;
       }
     });
