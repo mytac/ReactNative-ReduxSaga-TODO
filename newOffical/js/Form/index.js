@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  Text, View, Image, Button, StyleSheet, TimePickerAndroid, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback,
+  Text, View,
+  Button, StyleSheet, TimePickerAndroid, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback,
 } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -21,15 +22,17 @@ const styles = StyleSheet.create(transferByDpi({
   arrowWrapper: {
     marginRight: 50,
   },
-  title: {
+  titleStyle: {
     color: '#fff',
     fontFamily: 'Never say never',
     fontSize: 50,
     textAlign: 'center',
   },
+  timePickerWidth: {
+    width: 220,
+  },
   timePicker: {
     backgroundColor: '#fff',
-    width: 220,
     height: 80,
     fontSize: 50,
     borderRadius: 10,
@@ -68,7 +71,7 @@ const styles = StyleSheet.create(transferByDpi({
 // 处理时间格式
 const formatTime = time => (time < 10 ? `0${time}` : time);
 
-const Input = ({ val, placeholder }) => (
+const Input = ({ val, placeholder, onChangeText }) => (
   <View>
     <TextInput
       style={[styles.input, styles.inputNormal]}
@@ -77,6 +80,7 @@ const Input = ({ val, placeholder }) => (
       keyboardType="default"
       placeholderTextColor="#a3a3a3"
       underlineColorAndroid="#a3a3a3"
+      onChangeText={onChangeText}
     />
   </View>);
 
@@ -86,8 +90,12 @@ class Form extends React.Component {
     this.openTimePicker = this.openTimePicker.bind(this);
     this.state = {
       time: '00:00',
-      value: 0,
+      type: 0,
+      title: '',
+      description: '',
+      place: '',
     };
+    this.submit = this.submit.bind(this);
   }
 
   // 打开时间选择框
@@ -109,9 +117,15 @@ class Form extends React.Component {
     }
   }
 
+  // submit
+  submit() {
+    console.log(this.state);
+  }
+
   render() {
-    const { title, input, container, wrapper, radioLabel, radioForm, timePicker } = styles;
-    const { time } = this.state;
+    const { titleStyle, container,
+      wrapper, radioLabel, radioForm, timePicker, timePickerWidth } = styles;
+    const { time, title, description, place } = this.state;
 
     // radio配置
     const radioProps = [
@@ -123,40 +137,54 @@ class Form extends React.Component {
       <View
         style={container}
       >
-        <View style={title}>
+        <View>
           <MyBtn
             event={() => this.props.navigation.goBack()}
             Ele={() => <Icon name="chevron-left" size={transferByDpi(60)} color="#0981f7" />}
           />
-          <Text style={title}>Add new things</Text>
+          <Text style={titleStyle}>Add new things</Text>
         </View>
         <KeyboardAvoidingView
-          behavior="padding"
+          behavior="position"
           style={wrapper}
         >
-          <TouchableWithoutFeedback
-            onPress={() => this.openTimePicker()}
-          >
-            <View>
-              <Text
-                style={timePicker}
-              >{time}</Text>
-            </View>
-          </TouchableWithoutFeedback>
+          <View style={timePickerWidth}>
+            <TouchableWithoutFeedback
+              onPress={() => this.openTimePicker()}
+            >
+              <View>
+                <Text
+                  style={[timePickerWidth, timePicker]}
+                >{time}</Text>
+              </View>
+            </TouchableWithoutFeedback>
+          </View>
           <RadioForm
             formHorizontal
             radio_props={radioProps}
             initial={0}
-            onPress={(value) => { this.setState({ value }); }}
+            onPress={(type) => { this.setState({ type }); }}
             labelStyle={radioLabel}
             style={radioForm}
           />
-          <Input placeholder="Title" />
-          <Input placeholder="Description" />
-          <Input placeholder="Place" />
+          <Input
+            placeholder="Title"
+            onChangeText={text => this.setState({ title: text })}
+            val={title}
+          />
+          <Input
+            placeholder="Description"
+            onChangeText={text => this.setState({ description: text })}
+            val={description}
+          />
+          <Input
+            placeholder="Place"
+            onChangeText={text => this.setState({ place: text })}
+            val={place}
+          />
           <Button
-            onPress={this.openTimePicker}
-            title="openPicker"
+            onPress={this.submit}
+            title="submit"
           />
         </KeyboardAvoidingView>
 
