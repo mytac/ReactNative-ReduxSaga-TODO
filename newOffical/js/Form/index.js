@@ -3,8 +3,10 @@ import {
   Text, View, Image, Button, StyleSheet, TimePickerAndroid, TextInput, KeyboardAvoidingView,
 } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 import transferByDpi from '../utils/transferByDpi';
+import MyBtn from '../Component/Button';
 
 const styles = StyleSheet.create(transferByDpi({
   container: {
@@ -15,6 +17,9 @@ const styles = StyleSheet.create(transferByDpi({
   wrapper: {
     margin: 80,
     flexDirection: 'column',
+  },
+  arrowWrapper: {
+    marginRight: 50,
   },
   title: {
     color: '#fff',
@@ -97,7 +102,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const { title, input, container, wrapper, radioLabel, radioForm } = styles;
+    const { title, input, container, wrapper, radioLabel, radioForm, arrowWrapper } = styles;
     const { time } = this.state;
 
     // radio配置
@@ -110,7 +115,13 @@ class Form extends React.Component {
       <View
         style={container}
       >
-        <Text style={title}>Add new things</Text>
+        <View style={title}>
+          <MyBtn
+            event={() => this.props.navigation.goBack()}
+            Ele={() => <Icon name="chevron-left" size={transferByDpi(60)} color="#0981f7" />}
+          />
+          <Text style={title}>Add new things</Text>
+        </View>
         <KeyboardAvoidingView
           behavior="padding"
           style={wrapper}
@@ -134,10 +145,6 @@ class Form extends React.Component {
           <Button
             onPress={this.openTimePicker}
             title="openPicker"
-          />
-          <Button
-            onPress={() => this.props.navigation.goBack()}
-            title="Go back"
           />
         </KeyboardAvoidingView>
 
