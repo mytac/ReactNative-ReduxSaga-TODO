@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   Text, View, Image, Button, StyleSheet, TimePickerAndroid, TextInput, KeyboardAvoidingView,
 } from 'react-native';
-import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
+import RadioForm from 'react-native-simple-radio-button';
 import PropTypes from 'prop-types';
 import transferByDpi from '../utils/transferByDpi';
 
@@ -51,6 +51,9 @@ const styles = StyleSheet.create(transferByDpi({
   },
 }));
 
+// 处理时间格式
+const formatTime = time => (time < 10 ? `0${time}` : time);
+
 const Input = ({ val, placeholder }) => (
   <View>
     <TextInput
@@ -82,7 +85,7 @@ class Form extends React.Component {
       });
       if (action !== TimePickerAndroid.dismissedAction) {
         this.setState({
-          time: `${hour}:${minute}`,
+          time: `${formatTime(hour)}:${formatTime(minute)}`,
         });
       }
     } catch ({ code, message }) {
