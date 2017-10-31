@@ -22,6 +22,9 @@ const styles = StyleSheet.create(transferByDpi({
     fontSize: 50,
     textAlign: 'center',
   },
+  timePicker: {
+
+  },
   input: {
     height: 120,
     borderColor: 'gray',
@@ -71,7 +74,7 @@ class Form extends React.Component {
     super(props);
     this.openTimePicker = this.openTimePicker.bind(this);
     this.state = {
-      time: '',
+      time: '00:00',
       value: 0,
     };
   }
@@ -112,11 +115,10 @@ class Form extends React.Component {
           behavior="padding"
           style={wrapper}
         >
-          <TextInput
-            style={[input, { width: transferByDpi(240), paddingBottom: 0 }]}
-            onFocus={() => this.openTimePicker()}
-            value={time}
-            underlineColorAndroid="transparent"
+          <Button
+            style={[input]}
+            onPress={() => this.openTimePicker()}
+            title={time}
           />
           <RadioForm
             formHorizontal
