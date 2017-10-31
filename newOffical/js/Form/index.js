@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Text, View, Image, Button, StyleSheet, TimePickerAndroid, TextInput, KeyboardAvoidingView,
+  Text, View, Image, Button, StyleSheet, TimePickerAndroid, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback,
 } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -28,7 +28,13 @@ const styles = StyleSheet.create(transferByDpi({
     textAlign: 'center',
   },
   timePicker: {
-
+    backgroundColor: '#fff',
+    width: 180,
+    height: 80,
+    fontSize: 50,
+    borderRadius: 10,
+    textAlign: 'center',
+    fontFamily: 'Never say never',
   },
   input: {
     height: 120,
@@ -102,7 +108,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const { title, input, container, wrapper, radioLabel, radioForm, arrowWrapper } = styles;
+    const { title, input, container, wrapper, radioLabel, radioForm, timePicker } = styles;
     const { time } = this.state;
 
     // radio配置
@@ -126,11 +132,13 @@ class Form extends React.Component {
           behavior="padding"
           style={wrapper}
         >
-          <Button
-            style={[input]}
+          <TouchableWithoutFeedback
             onPress={() => this.openTimePicker()}
-            title={time}
-          />
+          >
+            <Text
+              style={timePicker}
+            >{time}</Text>
+          </TouchableWithoutFeedback>
           <RadioForm
             formHorizontal
             radio_props={radioProps}
