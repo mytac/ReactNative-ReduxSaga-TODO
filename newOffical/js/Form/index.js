@@ -90,13 +90,18 @@ class Form extends React.Component {
     super(props);
     this.openTimePicker = this.openTimePicker.bind(this);
     this.state = {
-      time: '00:00',
+      time: Form.initDate(),
       type: 0,
       title: '',
       description: '',
       place: '',
     };
     this.submit = this.submit.bind(this);
+  }
+
+  static initDate() {
+    const date = new Date();
+    return `${date.getHours()}:${date.getMinutes()}`;
   }
 
   // 打开时间选择框
