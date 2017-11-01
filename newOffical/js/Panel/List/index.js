@@ -21,7 +21,6 @@ export default class Form extends React.Component {
       backRightBtn, backRightBtnRight,
       rowBack, rowFront } = styles;
     const { data, toggleEvent } = this.props;
-
     return (
       <ScrollView style={container}>
         <Text style={[text, title]}>Inbox</Text>
@@ -29,7 +28,7 @@ export default class Form extends React.Component {
           dataSource={this.ds.cloneWithRows(data)}
           renderRow={(d, secId, rowId) => (
             <SwipeRow
-              rightOpenValue={-75}
+              rightOpenValue={-transferByDpi(150)}
               disableRightSwipe
             >
               <View style={rowBack}>

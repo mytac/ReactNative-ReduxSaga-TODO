@@ -50,13 +50,14 @@ class App extends Component {
 
   toggleComplete(choseIdx) {
     const newData = this.state.newData.map((item, index) => {
-      if (choseIdx === index) {
+      if (parseInt(choseIdx, 10) === index) {
         return Object.assign({}, item, {
           isDone: !item.isDone,
         });
       }
       return item;
     });
+
     this.setState({
       newData,
     });
