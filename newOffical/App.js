@@ -68,7 +68,7 @@ class App extends Component {
     if (state.params) {
       const { data } = state.params;
       if (data) {
-        this.state.newData.push(data);
+        DATA.push(data);
       }
     }
   }

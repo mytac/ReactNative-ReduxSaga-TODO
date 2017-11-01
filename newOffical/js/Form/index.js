@@ -7,6 +7,7 @@ import RadioForm from 'react-native-simple-radio-button';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 import transferByDpi from '../utils/transferByDpi';
+import isEmptyValid from '../utils/isEmptyValid';
 import MyBtn from '../Component/Button';
 
 const styles = StyleSheet.create(transferByDpi({
@@ -119,7 +120,9 @@ class Form extends React.Component {
 
   // submit
   submit() {
-    this.props.navigation.navigate('App', { data: this.state });
+    if (isEmptyValid(this.state)) {
+      this.props.navigation.navigate('App', { data: this.state });
+    }
   }
 
   render() {
