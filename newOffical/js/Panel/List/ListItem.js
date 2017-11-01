@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 4 / dpi,
     padding: 20 / dpi,
     flexDirection: 'row',
+    position: 'relative',
+    zIndex: 10,
   },
   checkBox: {
     borderWidth: 4 / dpi,
