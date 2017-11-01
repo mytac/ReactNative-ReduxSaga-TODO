@@ -15,12 +15,12 @@ const handleData = (data) => {
   return { personalNum, businessNum, ratio, completeNum };
 };
 
-export default function Panel({ data, toggleEvent }) {
+export default function Panel({ data, toggleEvent, delEvent }) {
   const { personalNum, businessNum, ratio, completeNum } = handleData(data);
   return (
     <View style={{ flex: 10 }}>
       <DashBoard personalNum={personalNum} businessNum={businessNum} ratio={ratio} />
-      <List data={data} toggleEvent={toggleEvent} />
+      <List data={data} toggleEvent={toggleEvent} delEvent={delEvent} />
       <BottomBar completeNum={completeNum} />
     </View>
   );
@@ -29,4 +29,5 @@ export default function Panel({ data, toggleEvent }) {
 Panel.propTypes = {
   data: PropTypes.array.isRequired,
   toggleEvent: PropTypes.func.isRequired,
+  delEvent: PropTypes.func.isRequired,
 };

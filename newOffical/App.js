@@ -42,12 +42,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newData: DATA,
+      newData: DATA || [],
     };
     this.toggleComplete = this.toggleComplete.bind(this);
     this.addData = this.addData.bind(this);
+    this.deleteData = this.deleteData.bind(this);
   }
 
+  // 标记完成/未完成事件
   toggleComplete(choseIdx) {
     const newData = this.state.newData.map((item, index) => {
       if (parseInt(choseIdx, 10) === index) {
@@ -74,6 +76,15 @@ class App extends Component {
     }
   }
 
+  // 删除事件
+  deleteData(choseIdx) {
+    const newData = [].concat(this.state.newData);
+    newData.splice(choseIdx, 1);
+    this.setState({
+      newData,
+    });
+  }
+
   render() {
     const { navigate } = this.props.navigation;
     const { newData } = this.state;
@@ -81,7 +92,7 @@ class App extends Component {
     this.addData();
     return (
       <View style={{ flex: 1 }}>
-        <Panel data={newData} toggleEvent={this.toggleComplete} />
+        <Panel data={newData} toggleEvent={this.toggleComplete} delEvent={this.deleteData} />
         <MyBtn
           event={() => navigate('Form')}
           myStyle={styles.roundBtnInner}

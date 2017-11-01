@@ -20,13 +20,13 @@ export default class Form extends React.Component {
     const { text, title, container,
       backRightBtn, backRightBtnRight,
       rowBack, rowFront } = styles;
-    const { data, toggleEvent } = this.props;
+    const { data, toggleEvent, delEvent } = this.props;
     return (
       <ScrollView style={container}>
         <Text style={[text, title]}>Inbox</Text>
         <SwipeListView
           dataSource={this.ds.cloneWithRows(data)}
-          renderRow={(d, secId, rowId) => (
+          renderRow={(d, secId, rowId, rowMap) => (
             <SwipeRow
               rightOpenValue={-transferByDpi(150)}
               disableRightSwipe
@@ -34,7 +34,15 @@ export default class Form extends React.Component {
               <View style={rowBack}>
                 <MyBtn
                   outerStyle={[backRightBtn, backRightBtnRight]}
-                  Ele={() => <Icon name="trash-o" size={transferByDpi(50)} color="#fff" />}
+                  Ele={() => (<Icon
+                    name="trash-o"
+                    size={transferByDpi(50)}
+                    color="#fff"
+                  />)}
+                  event={() => {
+                    rowMap[`${secId}${rowId}`].closeRow();
+                    delEvent(rowId);
+                  }}
                 />
               </View>
               <View
@@ -58,5 +66,6 @@ export default class Form extends React.Component {
 Form.propTypes = {
   data: PropTypes.array.isRequired,
   toggleEvent: PropTypes.func.isRequired,
+  delEvent: PropTypes.func.isRequired,
 };
 
