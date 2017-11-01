@@ -86,22 +86,23 @@ const Input = ({ val, placeholder, onChangeText }) => (
   </View>);
 
 class Form extends React.Component {
+  // 获取当前时间
+  static initTime() {
+    const date = new Date();
+    return `${date.getHours()}:${date.getMinutes()}`;
+  }
+
   constructor(props) {
     super(props);
     this.openTimePicker = this.openTimePicker.bind(this);
     this.state = {
-      time: Form.initDate(),
+      time: Form.initTime(),
       type: 0,
       title: '',
       description: '',
       place: '',
     };
     this.submit = this.submit.bind(this);
-  }
-
-  static initDate() {
-    const date = new Date();
-    return `${date.getHours()}:${date.getMinutes()}`;
   }
 
   // 打开时间选择框
