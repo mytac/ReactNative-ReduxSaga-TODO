@@ -13,7 +13,7 @@ import MyBtn from './js/Component/Button';
 
 import transferByDpi from './js/utils/transferByDpi';
 
-const data = [
+const DATA = [
   { time: '10:21', isDone: true, title: 'xxxx', description: 'bla bla bla', type: 'personal' },
   { time: '10:22', isDone: true, title: 'xxxx', description: 'bla bla bla' },
   { time: '10:23', isDone: false, title: 'xxxx', description: 'bla bla bla', type: 'personal' },
@@ -42,9 +42,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newData: data,
+      newData: DATA,
     };
     this.toggleComplete = this.toggleComplete.bind(this);
+    this.addData = this.addData.bind(this);
   }
 
   toggleComplete(choseIdx) {
@@ -61,10 +62,22 @@ class App extends Component {
     });
   }
 
+  // 添加todo事件
+  addData() {
+    const { state } = this.props.navigation;
+    if (state.params) {
+      const { data } = state.params;
+      if (data) {
+        this.state.newData.push(data);
+      }
+    }
+  }
 
   render() {
     const { navigate } = this.props.navigation;
     const { newData } = this.state;
+
+    this.addData();
     return (
       <View style={{ flex: 1 }}>
         <Panel data={newData} toggleEvent={this.toggleComplete} />

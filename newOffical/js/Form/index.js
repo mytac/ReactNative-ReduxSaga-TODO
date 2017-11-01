@@ -119,7 +119,7 @@ class Form extends React.Component {
 
   // submit
   submit() {
-    console.log(this.state);
+    this.props.navigation.navigate('App', { data: this.state });
   }
 
   render() {
