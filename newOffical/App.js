@@ -79,7 +79,7 @@ class App extends Component {
     }
   }
 
-  // 删除事件
+    // 标记完成/未完成事件
   deleteData(choseIdx) {
     const newData = [].concat(this.state.newData);
     newData.splice(choseIdx, 1);
