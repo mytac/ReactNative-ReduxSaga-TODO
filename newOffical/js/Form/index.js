@@ -89,7 +89,9 @@ class Form extends React.Component {
   // 获取当前时间
   static initTime() {
     const date = new Date();
-    return `${date.getHours()}:${date.getMinutes()}`;
+    const hour = formatTime(date.getHours());
+    const min = formatTime(date.getMinutes());
+    return `${hour}:${min}`;
   }
 
   constructor(props) {
