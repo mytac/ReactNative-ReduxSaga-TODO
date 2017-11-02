@@ -67,7 +67,6 @@ class App extends Component {
 
   // 添加todo事件
   addData(addData) {
-    // const { state } = this.props.navigation;
     const { newData } = this.state;
     if (addData) {
       const addedData = [].concat(newData);
@@ -93,8 +92,6 @@ class App extends Component {
     const { navigate } = this.props.navigation;
     const { newData } = this.state;
 
-    // this.addData();
-    console.log('33');
     return (
       <View style={{ flex: 1 }}>
         <Panel data={newData} toggleEvent={this.toggleComplete} delEvent={this.deleteData} />

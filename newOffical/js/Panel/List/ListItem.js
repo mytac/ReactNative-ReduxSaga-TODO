@@ -1,43 +1,40 @@
 import React from 'react';
 import {
-  Text, View, StyleSheet, PixelRatio,
+  Text, View, StyleSheet,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 
+import transferByDpi from '../../utils/transferByDpi';
 import Button from '../../Component/Button';
 
-const dpi = PixelRatio.get();
-const styles = StyleSheet.create({
+const styles = StyleSheet.create(transferByDpi({
   middle: {
     justifyContent: 'center',
     alignItems: 'center',
   },
   wrapper: {
-    height: 200 / dpi,
+    height: 200,
     borderBottomColor: '#ddd',
-    borderBottomWidth: 4 / dpi,
-    padding: 20 / dpi,
+    borderBottomWidth: 4,
+    padding: 20,
     flexDirection: 'row',
     position: 'relative',
     zIndex: 10,
   },
   checkBox: {
-    borderWidth: 4 / dpi,
+    borderWidth: 4,
     borderColor: '#2870a9',
-    width: 100 / dpi,
-    height: 100 / dpi,
-    borderRadius: 20 / dpi,
-    marginTop: 20 / dpi,
+    width: 100,
+    height: 100,
+    borderRadius: 20,
+    marginTop: 20,
   },
-  icon: {
-  },
-
-});
+}));
 
 const ToggleBtn = ({ isCheck }) => (
   <View style={[styles.checkBox, styles.middle]}>
-    <Icon name={isCheck ? 'check-circle-o' : 'circle-o'} size={56 / dpi} color="#2870a9" style={styles.icon} />
+    <Icon name={isCheck ? 'check-circle-o' : 'circle-o'} size={transferByDpi(56)} color="#2870a9" style={styles.icon} />
   </View>
 
 );
@@ -67,10 +64,10 @@ export default class ListItem extends React.Component {
           <Button event={this.props.toggleEvent} Ele={() => <ToggleBtn isCheck={isDone} />} />
         </View>
         <View style={{ flex: 3, flexDirection: 'column' }}>
-          <TextRow texts={title} color={'#000'} size={40 / dpi} />
-          <TextRow texts={description} color={'#788a94'} size={40 / dpi} />
+          <TextRow texts={title} color={'#000'} size={transferByDpi(40)} />
+          <TextRow texts={description} color={'#788a94'} size={transferByDpi(40)} />
         </View>
-        <Text style={{ flex: 0.5, fontFamily: 'Never say never', fontSize: 35 / dpi }}>{time}</Text>
+        <Text style={{ flex: 0.5, fontFamily: 'Never say never', fontSize: transferByDpi(40) }}>{time}</Text>
       </View>
     );
   }

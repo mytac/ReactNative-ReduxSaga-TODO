@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import transferByDpi from '../../utils/transferByDpi';
 
 const styles = StyleSheet.create(transferByDpi({
-  container: { flex: 0.8, padding: 60, backgroundColor: '#fff' },
+  container: { flex: 0.8, padding: 40, backgroundColor: '#fff' },
   text: {
     fontFamily: 'Never say never',
   },
@@ -35,7 +35,7 @@ const styles = StyleSheet.create(transferByDpi({
   },
   backRightBtnLeft: {
     backgroundColor: 'blue',
-    right: 150,
+    right: 100,
   },
   backRightBtnRight: {
     backgroundColor: 'red',
