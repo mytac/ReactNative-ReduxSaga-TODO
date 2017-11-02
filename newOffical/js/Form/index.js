@@ -127,7 +127,9 @@ class Form extends React.Component {
   // submit
   submit() {
     if (isEmptyValid(this.state)) {
-      this.props.navigation.navigate('App', { data: this.state });
+      const { state } = this.props.navigation;
+      state.params.event(this.state);
+      this.props.navigation.goBack();
     }
   }
 

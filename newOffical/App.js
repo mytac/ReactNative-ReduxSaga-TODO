@@ -66,12 +66,16 @@ class App extends Component {
   }
 
   // 添加todo事件
-  addData() {
-    const { state } = this.props.navigation;
-    if (state.params) {
-      const { data } = state.params;
-      if (data) {
-        DATA.push(data);
+  addData(addData) {
+    // const { state } = this.props.navigation;
+    const { newData } = this.state;
+    if (addData) {
+      const addedData = [].concat(newData);
+      if (addData) {
+        addedData.push(addData);
+        this.setState({
+          newData: addedData,
+        });
       }
     }
   }
@@ -89,12 +93,13 @@ class App extends Component {
     const { navigate } = this.props.navigation;
     const { newData } = this.state;
 
-    this.addData();
+    // this.addData();
+    console.log('33');
     return (
       <View style={{ flex: 1 }}>
         <Panel data={newData} toggleEvent={this.toggleComplete} delEvent={this.deleteData} />
         <MyBtn
-          event={() => navigate('Form')}
+          event={() => navigate('Form', { event: this.addData })}
           myStyle={styles.roundBtnInner}
           outerStyle={styles.btnPosition}
           Ele={() => <Icon name="plus" size={transferByDpi(40)} color="#fff" />}
