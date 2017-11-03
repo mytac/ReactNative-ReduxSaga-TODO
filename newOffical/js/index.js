@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Button, AppRegistry, Text, TextInput, View, ScrollView, FlatList, SectionList, Image, StyleSheet,
-} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import PropTypes from 'prop-types';
 
