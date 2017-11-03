@@ -105,20 +105,7 @@ class App extends Component {
   }
 }
 
-export default StackNavigator({
-  App: {
-    screen: App,
-    navigationOptions: {
-      header: null,
-    },
-  },
-  Form: {
-    screen: Form,
-    navigationOptions: {
-      header: null,
-    },
-  },
-});
+export default App;
 
 App.propTypes = {
   navigation: PropTypes.object.isRequired,
