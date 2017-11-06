@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Panel from './Panel';
 import MyBtn from './Component/Button';
-import { addTodo, delTodo, toggleTodo } from './actions';
+import { addTodoAction, delTodoAction, toggleTodoAction } from './actions';
 import transferByDpi from './utils/transferByDpi';
 
 const styles = StyleSheet.create(transferByDpi({
@@ -30,13 +30,13 @@ const styles = StyleSheet.create(transferByDpi({
 // 构造一个函数来分发action
 const mapDispatchToProps = dispatch => ({
   addTodo: (todo) => {
-    dispatch(addTodo(todo));
+    dispatch(addTodoAction(todo));
   },
   toggleTodo: (idx) => {
-    dispatch(toggleTodo(idx));
+    dispatch(toggleTodoAction(idx));
   },
   deleteTask: (idx) => {
-    dispatch(delTodo(idx));
+    dispatch(delTodoAction(idx));
   },
 });
 
@@ -72,4 +72,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
   navigation: PropTypes.object.isRequired,
+  todos: PropTypes.array.isRequired,
+  deleteTask: PropTypes.func.isRequired,
+  toggleTodo: PropTypes.func.isRequired,
+  addTodo: PropTypes.func.isRequired,
 };
