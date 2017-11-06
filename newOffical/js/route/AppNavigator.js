@@ -8,14 +8,11 @@ import { addTodo, delTodo, toggleTodo } from '../actions';
 
 export const AppNavigator = StackNavigator(configs);
 
-const AppWithNavigationState = ({ dispatch, nav }) => (
-  <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
-);
-
-AppWithNavigationState.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.object.isRequired,
-};
+const AppWithNavigationState = (props) => {
+  const { dispatch, nav } = props;
+  return (<AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />);
+}
+;
 
 // 构造一个函数来分发action
 const mapDispatchToProps = dispatch => ({
@@ -36,4 +33,13 @@ const mapStateToProps = state => ({
   todos: state.todos,
 });
 
-export default connect(mapDispatchToProps, mapStateToProps)(AppWithNavigationState);
+export default connect(mapStateToProps, mapDispatchToProps)(AppWithNavigationState);
+
+AppWithNavigationState.propTypes = {
+  dispatch: PropTypes.func,
+  nav: PropTypes.object.isRequired,
+};
+
+AppWithNavigationState.defaultProps = {
+  dispatch: () => {},
+};

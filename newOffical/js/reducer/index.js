@@ -21,7 +21,7 @@ const initialState = AppNavigator.router.getStateForAction(secondAction, tempNav
 
 
 /* 配置路由的reducer */
-function nav(state = initialState, action) {
+function navReducer(state = initialState, action) {
   let nextState;
   switch (action.type) {
     case 'App':
@@ -79,7 +79,7 @@ function todos(state = DATA, action) {
 
 /* 与其他reducer组合起来 */
 const appReducer = combineReducers({
-  nav,
+  nav: navReducer,
   todos,
 });
 
