@@ -15,9 +15,8 @@ const DATA = [
 
 const firstAction = AppNavigator.router.getActionForPathAndParams('App');
 const tempNavState = AppNavigator.router.getStateForAction(firstAction);
-const secondAction = AppNavigator.router.getActionForPathAndParams('Form');
 
-const initialState = AppNavigator.router.getStateForAction(secondAction, tempNavState);
+const initialState = AppNavigator.router.getStateForAction(firstAction, tempNavState);
 
 
 /* 配置路由的reducer */
