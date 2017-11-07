@@ -45,8 +45,7 @@ function navReducer(state = initialState, action) {
   return nextState || state;
 }
 
-
-// 标记完成/未完成事件
+// 删除todo
 const deleteTodo = (state, action) => {
   const newData = [].concat(state);
   newData.splice(action.index, 1);
@@ -62,8 +61,7 @@ const toggleTodo = (state, action) => state.map((item, index) => {
     });
   }
   return item;
-},
-);
+});
 
 function todos(state = DATA, action) {
   switch (action.type) {
