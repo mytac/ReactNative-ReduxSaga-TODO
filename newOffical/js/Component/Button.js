@@ -24,7 +24,10 @@ export default class Button extends React.Component {
 Button.propTypes = {
   event: PropTypes.func,
   myStyle: PropTypes.number,
-  outerStyle: PropTypes.number,
+  outerStyle: PropTypes.oneOfType([
+    PropTypes.number.isRequired,
+    PropTypes.array.isRequired,
+  ]),
   Ele: PropTypes.func.isRequired,
 };
 
