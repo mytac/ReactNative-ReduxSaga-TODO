@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Panel from './Panel';
 import MyBtn from './Component/Button';
-import { addTodoAction, delTodoAction, toggleTodoAction } from './actions';
+import { addTodoAction, delTodoAction, toggleTodoAction, fetchTodoAction } from './actions';
 import transferByDpi from './utils/transferByDpi';
 
 const styles = StyleSheet.create(transferByDpi({
@@ -28,7 +28,11 @@ const styles = StyleSheet.create(transferByDpi({
 }));
 
 // 构造一个函数来分发action
+
 const mapDispatchToProps = dispatch => ({
+  fetchTodo: () => {
+    dispatch(fetchTodoAction());
+  },
   addTodo: (todo) => {
     dispatch(addTodoAction(todo));
   },
@@ -49,6 +53,10 @@ const mapStateToProps = state => ({
 class App extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchTodo();
   }
 
   render() {
@@ -76,4 +84,5 @@ App.propTypes = {
   deleteTask: PropTypes.func.isRequired,
   toggleTodo: PropTypes.func.isRequired,
   addTodo: PropTypes.func.isRequired,
+  fetchTodo: PropTypes.func.isRequired,
 };
