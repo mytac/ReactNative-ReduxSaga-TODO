@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { NavigationActions } from 'react-navigation';
 
-import { ADD_TODO, DEL_TODO, TOGGLE_TODO } from '../actions';
+import { ADD_TODO, DEL_TODO, TOGGLE_TODO, FETCHING_TODO, FETCHING_TODO_SUCCESS, FETCHING_TODO_FAILURE } from '../actions';
 import { AppNavigator } from '../route/AppNavigator';
 import orderByDate from '../utils/orderByDate';
 
@@ -13,7 +13,6 @@ const DATA = orderByDate([
   { time: '10:24', isDone: false, title: 'xxxx', description: 'bla bla bla', type: 'personal' },
   { time: '10:24', isDone: true, title: 'xxxx', description: 'bla bla bla', type: 'personal' },
 ], 'time');
-
 
 const firstAction = AppNavigator.router.getActionForPathAndParams('App');
 const tempNavState = AppNavigator.router.getStateForAction(firstAction);
@@ -63,8 +62,14 @@ const toggleTodo = (state, action) => state.map((item, index) => {
   return item;
 });
 
-function todos(state = DATA, action) {
+function todos(state = [{ time: '10:24', isDone: false, title: 'xxxx', description: 'bla bla bla', type: 'personal' }], action) {
   switch (action.type) {
+    case FETCHING_TODO:
+      return state;
+    case FETCHING_TODO_SUCCESS:
+      return [...state, action.data];
+    case FETCHING_TODO_FAILURE:
+      return state;
     case ADD_TODO:
       return [...state, action.newTodo];
     case DEL_TODO:
@@ -75,6 +80,7 @@ function todos(state = DATA, action) {
       return state;
   }
 }
+
 
 /* 与其他reducer组合起来 */
 const appReducer = combineReducers({
