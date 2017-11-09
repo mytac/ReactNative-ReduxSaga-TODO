@@ -52,7 +52,7 @@ const toggleTodo = (state, action) => state.map((item, index) => {
   return item;
 });
 
-function todos(state = [{ time: '10:24', isDone: false, title: 'xxxx', description: '898847', type: 'personal' }], action) {
+function todos(state = [], action) {
   switch (action.type) {
     case FETCHING_TODO:
       return state;
