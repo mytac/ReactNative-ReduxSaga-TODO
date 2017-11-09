@@ -28,11 +28,10 @@ const styles = StyleSheet.create(transferByDpi({
 }));
 
 // 构造一个函数来分发action
-/* , */
 
 const mapDispatchToProps = dispatch => ({
-  fetchTodo: (todo) => {
-    dispatch(fetchTodoAction(todo));
+  fetchTodo: () => {
+    dispatch(fetchTodoAction());
   },
   addTodo: (todo) => {
     dispatch(addTodoAction(todo));

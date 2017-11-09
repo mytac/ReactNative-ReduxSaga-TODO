@@ -1,19 +1,19 @@
 import { put, takeEvery } from 'redux-saga/effects';
 
-import { FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE, FETCHING_DATA } from '../actions';
+import { FETCHING_TODO, FETCHING_TODO_SUCCESS, FETCHING_TODO_FAILURE } from '../actions';
 import getData from '../api';
 
 function* fetchData(action) {
   try {
     const data = yield getData();
-    yield put({ type: FETCHING_DATA_SUCCESS, data });
+    yield put({ type: FETCHING_TODO_SUCCESS, data });
   } catch (e) {
-    yield put({ type: FETCHING_DATA_FAILURE });
+    yield put({ type: FETCHING_TODO_FAILURE });
   }
 }
 
 function* dataSaga() {
-  yield takeEvery(FETCHING_DATA, fetchData);
+  yield takeEvery(FETCHING_TODO, fetchData);
 }
 
 export default dataSaga;

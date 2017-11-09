@@ -10,5 +10,5 @@ const DATA = orderByDate([
 ], 'time');
 
 export default () => new Promise((resolve, reject) => {
-  setTimeout(() => resolve(DATA), 3000);
+  setTimeout(() => resolve(DATA), 1000);
 });
