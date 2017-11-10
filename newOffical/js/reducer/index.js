@@ -39,8 +39,7 @@ const deleteTodo = (state, action) => {
   const newData = [].concat(state);
   newData.splice(action.index, 1);
   return newData;
-}
-;
+};
 
 // 标记完成/未完成事件
 const toggleTodo = (state, action) => state.map((item, index) => {
@@ -70,7 +69,6 @@ function todos(state = [], action) {
       return state;
   }
 }
-
 
 /* 与其他reducer组合起来 */
 const appReducer = combineReducers({

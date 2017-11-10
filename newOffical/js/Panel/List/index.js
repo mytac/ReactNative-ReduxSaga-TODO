@@ -26,6 +26,7 @@ export default class Form extends React.Component {
         <Text style={[text, title]}>Inbox</Text>
         <SwipeListView
           dataSource={this.ds.cloneWithRows(data)}
+          enableEmptySections
           renderRow={(d, secId, rowId, rowMap) => (
             <SwipeRow
               rightOpenValue={-transferByDpi(150)}

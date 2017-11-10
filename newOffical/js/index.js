@@ -10,6 +10,7 @@ import Panel from './Panel';
 import MyBtn from './Component/Button';
 import { addTodoAction, delTodoAction, toggleTodoAction, fetchTodoAction } from './actions';
 import transferByDpi from './utils/transferByDpi';
+import { deleteData, pushData, toggleData } from './api';
 
 const styles = StyleSheet.create(transferByDpi({
   roundBtnInner: {
@@ -34,13 +35,19 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchTodoAction());
   },
   addTodo: (todo) => {
-    dispatch(addTodoAction(todo));
+    pushData(todo).then(() => {
+      dispatch(fetchTodoAction());
+    });
   },
   toggleTodo: (idx) => {
-    dispatch(toggleTodoAction(idx));
+    toggleData(idx).then(() => {
+      dispatch(fetchTodoAction());
+    });
   },
   deleteTask: (idx) => {
-    dispatch(delTodoAction(idx));
+    deleteData(idx).then(() => {
+      dispatch(fetchTodoAction());
+    });
   },
 });
 
