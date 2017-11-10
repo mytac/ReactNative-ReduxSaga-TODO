@@ -1,5 +1,4 @@
 import { AsyncStorage } from 'react-native';
-
 /* eslint-disable no-console */
 
 // 存数据
@@ -22,3 +21,4 @@ export const getData = (key, handleData) => AsyncStorage.getItem(key)
 export const clearData = handleData => AsyncStorage.clear()
   .then(handleData)
   .catch(err => console.log(err));
+

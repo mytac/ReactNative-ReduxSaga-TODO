@@ -71,7 +71,6 @@ function todos(state = [], action) {
   }
 }
 
-
 /* 与其他reducer组合起来 */
 const appReducer = combineReducers({
   nav: navReducer,
