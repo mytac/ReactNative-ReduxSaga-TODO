@@ -2,20 +2,25 @@ import orderByDate from './utils/orderByDate';
 import { setData, getData, clearData } from './utils/dataOperations';
 
 // 存一个新值
-export function pushData(data, item) {
-  const res = [].concat(data);
-  res.push(item);
-  return setData('data', JSON.stringify(res));
+export function pushData(item) {
+  return getData('data', (res) => {
+    const copy = [].concat(JSON.parse(res));
+    copy.push(item);
+    return setData('data', JSON.stringify(orderByDate(copy)));
+  });
 }
 
 // 获取所有数据
 export function fetchData() {
-  return getData('data', res => JSON.parse(orderByDate(res)));
+  return getData('data', res => orderByDate(JSON.parse(res)));
 }
 
 // 删除
-export function deleteData(data, idx) {
-  const res = [].concat(data);
-  res.splice(idx, 1);
-  return setData('data', JSON.stringify(res));
+export function deleteData(idx) {
+  return getData('data', (res) => {
+    const copy = [].concat(JSON.parse(res));
+    copy.splice(idx, 1);
+    return setData('data', JSON.stringify(copy));
+  });
 }
+

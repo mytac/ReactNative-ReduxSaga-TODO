@@ -131,7 +131,9 @@ class Form extends React.Component {
     if (isEmptyValid(this.state)) {
       const { state } = this.props.navigation;
       state.params.event(this.state);
-      this.props.navigation.goBack();
+      setTimeout(() => {
+        this.props.navigation.goBack();
+      }, 1500);
     }
   }
 
