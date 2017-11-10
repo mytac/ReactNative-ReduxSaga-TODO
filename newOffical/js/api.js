@@ -24,3 +24,19 @@ export function deleteData(idx) {
   });
 }
 
+// 完成/未完成状态
+export function toggleData(idx) {
+  return getData('data', (res) => {
+    const copy = [].concat(JSON.parse(res));
+    const result = copy.map((item, index) => {
+      if (index === parseInt(idx, 10)) {
+        return Object.assign({}, item,
+          {
+            isDone: !item.isDone,
+          });
+      }
+      return item;
+    });
+    return setData('data', JSON.stringify(result));
+  });
+}
