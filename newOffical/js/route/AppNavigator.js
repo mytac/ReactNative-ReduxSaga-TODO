@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { addNavigationHelpers, DrawerNavigator } from 'react-navigation';
 
 import configs from './configs';
+import style from './style';
 
-export const AppNavigator = DrawerNavigator(configs);
+export const AppNavigator = DrawerNavigator(configs, style);
 
 const AppWithNavigationState = (props) => {
   const { dispatch, nav } = props;
