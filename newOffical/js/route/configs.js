@@ -5,6 +5,7 @@ const AppRouteConfigs = {
     screen: TodoNavigator,
     navigationOptions: {
       header: null,
+      title: 'Todo',
     },
   },
 };
