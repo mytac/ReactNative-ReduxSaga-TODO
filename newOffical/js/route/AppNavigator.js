@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addNavigationHelpers, StackNavigator } from 'react-navigation';
+import { addNavigationHelpers, DrawerNavigator } from 'react-navigation';
 
 import configs from './configs';
+import style from './style';
 
-export const AppNavigator = StackNavigator(configs);
+export const AppNavigator = DrawerNavigator(configs, style);
 
 const AppWithNavigationState = (props) => {
   const { dispatch, nav } = props;

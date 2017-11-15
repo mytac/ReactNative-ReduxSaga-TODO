@@ -1,19 +1,12 @@
-import App from '../index';
-import Form from '../Form';
+import TodoNavigator from './TodoNavigator';
 
 const AppRouteConfigs = {
-  App: {
-    screen: App,
+  TodoNavigator: {
+    screen: TodoNavigator,
     navigationOptions: {
       header: null,
-    },
-  },
-  Form: {
-    screen: Form,
-    navigationOptions: {
-      header: null,
+      title: 'Todo',
     },
   },
 };
-
 export default AppRouteConfigs;
