@@ -1,15 +1,19 @@
 import React from 'react';
 import {
-  Text, View, ScrollView, Dimensions,
+  Text, View, ScrollView, Dimensions, TouchableOpacity,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 
-import styles from './style';
+import transferByDpi from '../utils/transferByDpi';
 
-// 模拟渲染grid中的数组
-const tempGridArray = Array(25).fill(1);
+import styles from './style';
+import dataSource from './dataSource';
+
+
+// 获取屏幕的宽度，用来渲染grid宽度
+const { width } = Dimensions.get('window');
 
 const Gallery = () => (
   <Swiper style={styles.wrapper} autoplay showsPagination={false}>
@@ -25,30 +29,49 @@ const Gallery = () => (
   </Swiper>
 );
 
-const Grid = () => {
-  const { width } = Dimensions.get('window');
+
+const Grid = (props) => {
+  const { iconName, keyId, title, color, routeName, navigation } = props;
   return (
-    <View style={[styles.grid, { width: width / 3, height: width / 3 }]}>
+    <TouchableOpacity
+      onPress={() => { navigation.navigate(routeName); }}
+      style={[styles.grid, { width: width / 3, height: width / 3 }]}
+    >
       <View style={styles.gridInner}>
-        <Text>Grid</Text>
+        <Icon
+          name={iconName}
+          size={transferByDpi(50)}
+          color={color}
+        />
+        <Text>{title}</Text>
+        <Text>Day{keyId}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
-const GridWrapper = () => (
+const GridWrapper = props => (
   <View style={styles.gridWrapper}>
-    {tempGridArray.map(a => <Grid />)}
+    {dataSource.map(obj => <Grid {...obj} key={obj} {...props} />)}
   </View>
 );
 
 
-export default function FirstPage() {
+export default function FirstPage(props) {
   return (
     <ScrollView>
       <Gallery />
-      <GridWrapper />
+      <GridWrapper {...props} />
     </ScrollView>
   );
 }
+
+Grid.propTypes = {
+  iconName: PropTypes.string.isRequired,
+  keyId: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  routeName: PropTypes.string.isRequired,
+  navigation: PropTypes.object.isRequired,
+};
 
