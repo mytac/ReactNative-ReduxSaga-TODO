@@ -4,7 +4,7 @@ import { NavigationActions } from 'react-navigation';
 import { ADD_TODO, DEL_TODO, TOGGLE_TODO, FETCHING_TODO, FETCHING_TODO_SUCCESS, FETCHING_TODO_FAILURE } from '../actions';
 import { AppNavigator } from '../route/AppNavigator';
 
-const firstAction = AppNavigator.router.getActionForPathAndParams('App');
+const firstAction = AppNavigator.router.getActionForPathAndParams('Personal');
 const tempNavState = AppNavigator.router.getStateForAction(firstAction);
 
 const initialState = AppNavigator.router.getStateForAction(firstAction, tempNavState);
