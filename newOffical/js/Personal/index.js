@@ -1,20 +1,28 @@
 import React from 'react';
 import {
-  Text, View, StyleSheet, ScrollView, Dimensions,
+  Text, View, ScrollView, Dimensions,
 } from 'react-native';
+import Swiper from 'react-native-swiper';
 
 import PropTypes from 'prop-types';
 
-import transferByDpi from '../utils/transferByDpi';
+import styles from './style';
 
 // 模拟渲染grid中的数组
 const tempGridArray = Array(25).fill(1);
 
-
 const Gallery = () => (
-  <View>
-    <Text>galley</Text>
-  </View>
+  <Swiper style={styles.wrapper} autoplay showsPagination={false}>
+    <View style={styles.slide1}>
+      <Text style={styles.text}>Hello Swiper</Text>
+    </View>
+    <View style={styles.slide2}>
+      <Text style={styles.text}>Beautiful</Text>
+    </View>
+    <View style={styles.slide3}>
+      <Text style={styles.text}>And simple</Text>
+    </View>
+  </Swiper>
 );
 
 const Grid = () => {
@@ -44,23 +52,3 @@ export default function FirstPage() {
   );
 }
 
-const styles = StyleSheet.create(transferByDpi({
-  gridWrapper: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    borderTopWidth: 3,
-    borderTopColor: '#ddd',
-  },
-  grid: {
-    backgroundColor: '#ddd',
-    paddingRight: 3,
-    paddingBottom: 3,
-  },
-  gridInner: {
-    backgroundColor: '#fff',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-}));
