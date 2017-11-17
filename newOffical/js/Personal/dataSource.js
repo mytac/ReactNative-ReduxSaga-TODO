@@ -8,9 +8,9 @@ export default [
   },
   {
     keyId: 2,
-    iconName: 'calendar',
-    title: 'TODO APP',
-    color: '#295cce',
+    iconName: 'clock-o',
+    title: '计时器',
+    color: '#399cde',
     routeName: 'TodoNavigator',
   },
   {
