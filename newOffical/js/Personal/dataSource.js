@@ -11,7 +11,7 @@ export default [
     iconName: 'clock-o',
     title: '计时器',
     color: '#399cde',
-    routeName: 'TodoNavigator',
+    routeName: 'Timer',
   },
   {
     keyId: 3,
