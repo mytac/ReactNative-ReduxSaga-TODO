@@ -1,18 +1,21 @@
 import React from 'react';
 import {
-  Text, View, TouchableOpacity,
+  Text, View, TouchableOpacity,ScrollView
 } from 'react-native';
 
 import PropTypes from 'prop-types';
+import formatNum from '../utils/formatNum';
+
 import styles from './style';
 
+
 const TimerPanel = ({ divideTime, totalTime }) => {
-  const { timerPanel, titleM, titleL, fontNever } = styles;
+  const { timerPanel, titleM, titleL, fontPlaze } = styles;
 
   return (
     <View style={timerPanel}>
-      <Text style={[fontNever, titleM]}>{'00:00:11'}</Text>
-      <Text style={[fontNever, titleL]}>{'00:00:00'}</Text>
+      <Text style={[fontPlaze, titleM]}>{divideTime}</Text>
+      <Text style={[fontPlaze, titleL]}>{totalTime}</Text>
     </View>
   );
 };
@@ -50,13 +53,12 @@ const ListItem = ({ index, time }) => (
   </View>
 );
 
-const List = () => {
+const List = (props) => {
   const { list } = styles;
-  const arr = ['00:00:11', '00:00:11', '00:00:11'];
   return (
-    <View style={list}>
-      {arr.map((a, index) => <ListItem time={a} index={index} />)}
-    </View>
+    <ScrollView style={list}>
+      {props.list.map((a, index) => <ListItem time={a} index={index} />)}
+    </ScrollView>
   );
 };
 
@@ -71,6 +73,7 @@ export default class Timer extends React.Component {
       totalTime: '00:00:05',
       isStart: false,
       isReset: false,
+      list: [],
     };
     this.start = this.start.bind(this);
     this.count = this.count.bind(this);
@@ -86,40 +89,54 @@ export default class Timer extends React.Component {
         lBtnText: 'RESET',
         isReset: false,
       });
-      console.log('end');
-      // clearInterval(this.interval);
+      clearInterval(this.interval);
+      // 清空初始时间
+      this.initTime = null;
     } else {
+      // 点击start时，获取初始时间
+      if (!this.initTime) {
+        this.initTime = (new Date()).getTime();
+      }
       // 开始计时状态
       this.setState({
         isStart: true,
         rBtnText: 'STOP',
         lBtnText: 'COUNT',
       });
-      console.log('计时中');
-      /* this.interval = setInterval(
+      this.interval = setInterval(
         () => {
+          const currentTime = (new Date()).getTime();
+          const countingTime = currentTime - this.initTime;
+          const minute = formatNum(countingTime / (60 * 1000));
+          const senconds = formatNum((countingTime - (minute * 60000)) / 1000);
+          const millSeconds = formatNum((countingTime % 1000) / 10);
           this.setState({
-            // currentTime: (new Date()).getTime(),
-            totalTime: (new Date()).getTime(),
+            totalTime: `${minute}:${senconds}:${millSeconds}`,
           });
         },
-        10,
-      ); */
+        50,
+      );
     }
   }
   count() {
-    const { isStart } = this.state;
+    const { isStart, totalTime } = this.state;
     if (!isStart) {
       // 复位状态
-      console.log('reset');
+      this.initTime = null;
+      this.setState({
+        totalTime: '00:00:00',
+        list: [],
+      });
     } else {
       // 计时状态
-      console.log('count');
+      this.setState({
+        list: [...this.state.list, totalTime],
+      });
     }
   }
 
   render() {
-    const { divideTime, totalTime, rBtnText, lBtnText } = this.state;
+    const { divideTime, totalTime, rBtnText, lBtnText, list } = this.state;
     return (
       <View style={styles.timer}>
         <TimerPanel divideTime={divideTime} totalTime={totalTime} />
@@ -129,7 +146,7 @@ export default class Timer extends React.Component {
           name1={lBtnText}
           name2={rBtnText}
         />
-        <List />
+        <List list={list} />
       </View>
     );
   }
