@@ -13,12 +13,16 @@ export default StyleSheet.create(transferByDpi({
   fontNever: {
     fontFamily: 'Never say never',
   },
+  fontPlaze: {
+    fontFamily: 'PlazaDReg',
+  },
   titleL: {
-    fontSize: 200,
+    fontSize: 250,
     textAlign: 'right',
+    top: 50,
   },
   titleM: {
-    fontSize: 50,
+    fontSize: 75,
     textAlign: 'right',
     top: 50,
   },
