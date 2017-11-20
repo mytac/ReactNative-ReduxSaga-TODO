@@ -7,8 +7,8 @@ export default StyleSheet.create(transferByDpi({
   },
   timerPanel: {
     flex: 1,
-    paddingLeft: 200,
-    paddingRight: 200,
+    paddingLeft: 150,
+    paddingRight: 150,
   },
   fontNever: {
     fontFamily: 'Never say never',
