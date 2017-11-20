@@ -6,7 +6,7 @@ export default StyleSheet.create(transferByDpi({
     flex: 1,
   },
   timerPanel: {
-    flex: 1,
+    flex: 0.5,
     paddingLeft: 150,
     paddingRight: 150,
   },
@@ -27,7 +27,7 @@ export default StyleSheet.create(transferByDpi({
     top: 50,
   },
   btnGroup: {
-    flex: 1,
+    flex: 0.5,
     flexDirection: 'row',
     backgroundColor: '#ddd',
     alignItems: 'center',
