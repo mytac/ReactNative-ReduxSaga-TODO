@@ -6,12 +6,11 @@ const navigatorStyle = {
   drawerPosition: 'left', // 抽屉在左边还是右边
   drawerBackgroundColor: activeColor,
   contentOptions: {
-    initialRouteName: 'App', // 默认页面组件
-    activeItemKey: 'Notifications',
+    initialRouteName: 'Personal', // 默认页面组件
     labelStyle: {// 标签样式
       height: 30,
       fontSize: 20,
-      fontFamily: 'Never say never',
+      position: 'relative',
     },
     iconContainerStyle: {
       opacity: 1,
