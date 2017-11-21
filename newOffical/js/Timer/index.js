@@ -68,11 +68,13 @@ export default class Timer extends React.Component {
     this.interval = null;
     this.initTime = 0; // 初始时间，即按start的时间
     this.pauseTime = 0;// 累加时间，从暂停到start的时间
+    this.recordTime = 0;// 累加时间，从暂停到start的时间
     this.state = {
       rBtnText: 'START',
       lBtnText: 'COUNT',
       divideTime: '00:00:00',
-      totalTime: '00:00:05',
+      totalTime: '00:00:00',
+      recordTime: 0,
       isStart: false,
       isReset: false,
       list: [],
@@ -114,9 +116,17 @@ export default class Timer extends React.Component {
           const minute = formatNum(countingTime / (60 * 1000));
           const senconds = formatNum((countingTime - (minute * 60000)) / 1000);
           const millSeconds = formatNum((countingTime % 1000) / 10);
+          console.log('this.recordTime', this.recordTime);
+          const dCountingTime = currentTime - this.initTime - this.recordTime;
+          const dMin = formatNum(dCountingTime / (60 * 1000));
+          const dSenconds = formatNum((dCountingTime - (minute * 60000)) / 1000);
+          const dMillSeconds = formatNum((dCountingTime % 1000) / 10);
+
           this.setState({
             totalTime: `${minute}:${senconds}:${millSeconds}`,
             countedTime: countingTime,
+            recordTime: countingTime,
+            divideTime: `${dMin}:${dSenconds}:${dMillSeconds}`,
           });
         },
         50,
@@ -124,20 +134,24 @@ export default class Timer extends React.Component {
     }
   }
   count() {
-    const { isStart, totalTime } = this.state;
+    const { isStart, recordTime, divideTime } = this.state;
     if (!isStart) {
       // 复位状态
       this.initTime = 0;
       this.pauseTime = 0;
+      this.recordTime = 0;
       this.setState({
         totalTime: '00:00:00',
+        divideTime: '00:00:00',
         list: [],
         countedTime: 0,
+        recordTime: 0,
       });
     } else {
       // 计时状态
+      this.recordTime = recordTime;
       this.setState({
-        list: [...this.state.list, totalTime],
+        list: [...this.state.list, divideTime],
       });
     }
   }
