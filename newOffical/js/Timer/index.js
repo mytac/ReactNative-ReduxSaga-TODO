@@ -116,7 +116,6 @@ export default class Timer extends React.Component {
           const minute = formatNum(countingTime / (60 * 1000));
           const senconds = formatNum((countingTime - (minute * 60000)) / 1000);
           const millSeconds = formatNum((countingTime % 1000) / 10);
-          console.log('this.recordTime', this.recordTime);
           const dCountingTime = currentTime - this.initTime - this.recordTime;
           const dMin = formatNum(dCountingTime / (60 * 1000));
           const dSenconds = formatNum((dCountingTime - (minute * 60000)) / 1000);
@@ -180,16 +179,23 @@ TimerPanel.propTypes = {
 BtnGroup.propTypes = {
   name1: PropTypes.string,
   name2: PropTypes.string,
+  startEvent: PropTypes.func.isRequired,
+  resetEvent: PropTypes.func.isRequired,
 };
 
 Btn.propTypes = {
   color: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
+  event: PropTypes.func.isRequired,
 };
 
 ListItem.propTypes = {
   index: PropTypes.number.isRequired,
   time: PropTypes.string.isRequired,
+};
+
+List.propTypes = {
+  list: PropTypes.array.isRequired,
 };
 
 BtnGroup.defaultProps = {
