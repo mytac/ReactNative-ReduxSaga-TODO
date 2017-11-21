@@ -1,6 +1,7 @@
 import TodoNavigator from './TodoNavigator';
 import Personal from '../Personal';
 import Timer from '../Timer';
+import Weather from '../Weather';
 
 const AppRouteConfigs = {
   Personal: {
@@ -17,6 +18,14 @@ const AppRouteConfigs = {
       title: 'Timer',
     },
   },
+  Weather: {
+    screen: Weather,
+    navigationOptions: {
+      header: null,
+      title: 'Weather',
+    },
+  },
+
   TodoNavigator: {
     screen: TodoNavigator,
     navigationOptions: {
