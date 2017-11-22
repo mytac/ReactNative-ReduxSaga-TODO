@@ -15,7 +15,7 @@ const weatherIconObj = {
 };
 
 export default function Weather() {
-  const { panel, white, smFontSize, midFontSize, lFontSize, pageStyle, blockStyle, xsFont } = styles;
+  const { panel, white, smFontSize, midFontSize, lFontSize, pageStyle, blockStyle, xsFont, listItemStyle, listStyle } = styles;
   const Panel = () => (
     <View style={panel}>
       <Text style={[midFontSize, white]}>北京</Text>
@@ -35,45 +35,26 @@ export default function Weather() {
     </View>
   );
 
-  const List = () => (
-    <ScrollView style={{ flex: 3 }}>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-      <Text>list</Text>
-    </ScrollView>
+  const ListItem = ({ type }) => (
+    <View style={listItemStyle}>
+      <Text style={[white, xsFont]}> 星期一</Text>
+      <Icon
+        name={weatherIconObj[type]}
+        size={transferByDpi(45)}
+        color="#fff"
+      />
+      <Text style={[white, xsFont]}> 15  16</Text>
+    </View>
   );
+
+  const List = () => {
+    const arr = Array(10).fill({ type: 1, num: 20 });
+    return (
+      <ScrollView style={[{ flex: 3 }, listStyle]}>
+        {arr.map(obj => <ListItem type={obj.type} />)}
+      </ScrollView>
+    );
+  };
 
   const HorizontalScrollRow = () => {
     const arr = Array(24).fill({ type: 1, num: 20 });

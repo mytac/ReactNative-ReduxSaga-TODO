@@ -31,6 +31,17 @@ export default StyleSheet.create(transferByDpi({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  listStyle: {
+    position: 'relative',
+    marginTop: 100,
+    bottom: 100,
+  },
+  listItemStyle: {
+    flexDirection: 'row',
+    marginBottom: 50,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   wrapper: {
     height: 500,
   },
