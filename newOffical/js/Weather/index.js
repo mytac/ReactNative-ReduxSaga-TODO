@@ -15,7 +15,10 @@ const weatherIconObj = {
 };
 
 export default function Weather() {
-  const { panel, white, smFontSize, midFontSize, lFontSize, pageStyle, blockStyle, xsFont, listItemStyle, listStyle } = styles;
+  const { panel, white,
+    smFontSize, midFontSize, lFontSize,
+    pageStyle, blockStyle, xsFont, listItemStyle, listStyle } = styles;
+
   const Panel = () => (
     <View style={panel}>
       <Text style={[midFontSize, white]}>北京</Text>
@@ -78,7 +81,7 @@ export default function Weather() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Swiper style={styles.wrapper} showsPagination>
+      <Swiper style={styles.wrapper} showsPagination dotColor="#fff" activeDotColor="#787d82">
         <Page />
         <Page />
       </Swiper>

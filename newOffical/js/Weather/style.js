@@ -34,6 +34,7 @@ export default StyleSheet.create(transferByDpi({
   listStyle: {
     position: 'relative',
     marginTop: 100,
+    padding: 35,
     bottom: 100,
   },
   listItemStyle: {
@@ -44,10 +45,5 @@ export default StyleSheet.create(transferByDpi({
   },
   wrapper: {
     height: 500,
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
   },
 }));
