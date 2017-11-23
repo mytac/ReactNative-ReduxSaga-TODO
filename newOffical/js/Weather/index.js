@@ -7,6 +7,7 @@ import transferByDpi from '../utils/transferByDpi';
 import PropTypes from 'prop-types';
 
 import styles from './style';
+import mockData from './mockData';
 
 const weatherIconObj = {
   1: 'sun-o',
@@ -19,11 +20,11 @@ export default function Weather() {
     smFontSize, midFontSize, lFontSize,
     pageStyle, blockStyle, xsFont, listItemStyle, listStyle } = styles;
 
-  const Panel = () => (
+  const Panel = ({ city, desc, temperature }) => (
     <View style={panel}>
-      <Text style={[midFontSize, white]}>北京</Text>
-      <Text style={[smFontSize, white]}>大部晴朗</Text>
-      <Text style={[lFontSize, white]}>5℃</Text>
+      <Text style={[midFontSize, white]}>{city}</Text>
+      <Text style={[smFontSize, white]}>{desc}</Text>
+      <Text style={[lFontSize, white]}>{temperature}℃</Text>
     </View>);
 
   const SquareBlock = ({ index, type, num }) => (
@@ -38,26 +39,23 @@ export default function Weather() {
     </View>
   );
 
-  const ListItem = ({ type }) => (
+  const ListItem = ({ day, type, min, max }) => (
     <View style={listItemStyle}>
-      <Text style={[white, xsFont]}> 星期一</Text>
+      <Text style={[white, xsFont]}>{day}</Text>
       <Icon
         name={weatherIconObj[type]}
         size={transferByDpi(45)}
         color="#fff"
       />
-      <Text style={[white, xsFont]}> 15  16</Text>
+      <Text style={[white, xsFont]}>{min}  {max}</Text>
     </View>
   );
 
-  const List = () => {
-    const arr = Array(10).fill({ type: 1, num: 20 });
-    return (
-      <ScrollView style={[{ flex: 3 }, listStyle]}>
-        {arr.map(obj => <ListItem type={obj.type} />)}
-      </ScrollView>
-    );
-  };
+  const List = ({ data }) => (
+    <ScrollView style={[{ flex: 3 }, listStyle]}>
+      {data.map(obj => <ListItem {...obj} />)}
+    </ScrollView>
+  );
 
   const HorizontalScrollRow = () => {
     const arr = Array(24).fill({ type: 1, num: 20 });
@@ -71,19 +69,18 @@ export default function Weather() {
     );
   };
 
-  const Page = () => (
+  const Page = ({ place, now, data }) => (
     <View style={[pageStyle, { flex: 1 }]}>
-      <Panel />
+      <Panel city={place} {...now} />
       <HorizontalScrollRow />
-      <List />
+      <List data={data} />
     </View>
   );
 
   return (
     <View style={{ flex: 1 }}>
       <Swiper style={styles.wrapper} showsPagination dotColor="#fff" activeDotColor="#787d82">
-        <Page />
-        <Page />
+        {mockData.map(obj => <Page {...obj} />)}
       </Swiper>
     </View>
 
