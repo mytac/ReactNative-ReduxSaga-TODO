@@ -22,9 +22,9 @@ export default [
   },
   {
     keyId: 4,
-    iconName: 'calendar',
-    title: 'TODO APP',
-    color: '#295cce',
-    routeName: 'TodoNavigator',
+    iconName: 'twitter',
+    title: 'Twitter',
+    color: '#3385ff',
+    routeName: 'Twitter',
   },
 ];

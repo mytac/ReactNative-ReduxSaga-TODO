@@ -2,6 +2,7 @@ import TodoNavigator from './TodoNavigator';
 import Personal from '../Personal';
 import Timer from '../Timer';
 import Weather from '../Weather';
+import Twitter from '../Twitter';
 
 const AppRouteConfigs = {
   Personal: {
@@ -25,12 +26,18 @@ const AppRouteConfigs = {
       title: 'Weather',
     },
   },
-
   TodoNavigator: {
     screen: TodoNavigator,
     navigationOptions: {
       header: null,
       title: 'Todo',
+    },
+  },
+  Twitter: {
+    screen: Twitter,
+    navigationOptions: {
+      header: null,
+      title: 'Twitter',
     },
   },
 };
