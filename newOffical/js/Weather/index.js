@@ -52,7 +52,7 @@ export default function Weather() {
 
   const List = ({ data }) => (
     <ScrollView style={[{ flex: 3 }, listStyle]}>
-      {data.map(obj => <ListItem {...obj} />)}
+      {data.map(obj => <ListItem {...obj} key={obj} />)}
     </ScrollView>
   );
 
@@ -61,7 +61,8 @@ export default function Weather() {
     return (
       <View style={{ flex: 0.3 }}>
         <ScrollView horizontal>
-          {arr.map((obj, index) => <SquareBlock index={index} type={obj.type} num={obj.num} />)}
+          {arr.map((obj, index) =>
+            <SquareBlock index={index} type={obj.type} num={obj.num} key={obj} />)}
         </ScrollView>
       </View>
 
