@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text, View, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import transferByDpi from '../utils/transferByDpi';
-
 import PropTypes from 'prop-types';
 
+import transferByDpi from '../utils/transferByDpi';
 import styles from './style';
 import mockData from './mockData';
 
@@ -77,6 +76,35 @@ export default function Weather() {
     </View>
   );
 
+  Panel.propTypes = {
+    city: PropTypes.string.isRequired,
+    desc: PropTypes.string.isRequired,
+    temperature: PropTypes.number.isRequired,
+  };
+
+  SquareBlock.propTypes = {
+    index: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    num: PropTypes.number.isRequired,
+  };
+
+  List.propTypes = {
+    data: PropTypes.array.isRequired,
+  };
+
+  Page.propTypes = {
+    place: PropTypes.string.isRequired,
+    now: PropTypes.object.isRequired,
+    data: PropTypes.array.isRequired,
+  };
+
+  ListItem.propTypes = {
+    day: PropTypes.string.isRequired,
+    type: PropTypes.number.isRequired,
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <Swiper style={styles.wrapper} showsPagination dotColor="#fff" activeDotColor="#787d82">
@@ -86,3 +114,4 @@ export default function Weather() {
 
   );
 }
+
