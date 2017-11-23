@@ -1,13 +1,9 @@
 import React from 'react';
 import {
-  Text, View, StyleSheet,
+  Text, View,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
-
-const styles = StyleSheet.create({
-
-});
 
 export default function Form() {
   return (

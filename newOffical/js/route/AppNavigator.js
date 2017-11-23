@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addNavigationHelpers, DrawerNavigator} from 'react-navigation';
+import { addNavigationHelpers, DrawerNavigator } from 'react-navigation';
 
 import configs from './configs';
 import style from './style';
